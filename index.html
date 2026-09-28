@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>TARA FBO Enterprise Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>TARA FBO Enterprise Hub</title>
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Cache Elimination Guardrails -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Core Tailwind & Font Libraries -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome Free Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -22,17 +25,6 @@
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
-          },
-          colors: {
-            brand: {
-              950: '#050811',
-              900: '#0a0f1d',
-              850: '#0f172a',
-              accent: '#3b82f6',
-              emerald: '#10b981',
-              amber: '#f59e0b',
-              rose: '#f43f5e'
-            }
           }
         }
       }
@@ -40,251 +32,246 @@
   </script>
 
   <style>
+    :root {
+      --bg: #070a12;
+      --surface: #0f172a;
+      --surface-sub: #1e293b;
+      --border: rgba(255, 255, 255, 0.08);
+      --hero-bg: linear-gradient(180deg, rgba(6, 78, 59, 0.55) 0%, rgba(2, 44, 34, 0.85) 100%);
+      --hero-border: rgba(16, 185, 129, 0.45);
+      --hero-label: #34d399;
+      --hero-value: #ecfdf5;
+    }
+
     * {
       -webkit-tap-highlight-color: transparent;
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+
     body {
+      background-color: var(--bg);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #050811;
       color: #f8fafc;
+      -webkit-font-smoothing: antialiased;
       user-select: none;
       -webkit-user-select: none;
     }
+
     .font-mono {
       font-family: 'JetBrains Mono', monospace;
     }
-    .glass-card {
-      background: rgba(15, 23, 42, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+
+    .master-header-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
-    .hero-production-box {
-      background: linear-gradient(180deg, rgba(6, 78, 59, 0.5) 0%, rgba(2, 44, 34, 0.8) 100%);
-      border: 1.5px solid rgba(16, 185, 129, 0.45);
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.4);
     }
-    /* Ambient glow elements */
-    .ambient-glow-blue {
-      position: fixed;
-      top: -100px;
-      right: -80px;
-      width: 280px;
-      height: 280px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(0, 0, 0, 0) 70%);
-      pointer-events: none;
-      z-index: 0;
+
+    .hero-net-container {
+      background: var(--hero-bg);
+      border: 1.5px solid var(--hero-border);
+      box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.25);
     }
-    .ambient-glow-amber {
-      position: fixed;
-      bottom: 60px;
-      left: -90px;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
-      pointer-events: none;
-      z-index: 0;
+
+    .glass-surface {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
     }
+
+    .badge-excellent { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-fullday { background: rgba(20, 184, 166, 0.15); color: #5eead4; border: 1px solid rgba(20, 184, 166, 0.3); }
+    .badge-halfday { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-progress { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-pending { background: rgba(249, 115, 22, 0.15); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.3); }
+    .badge-absent { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
   </style>
 </head>
-<body class="bg-brand-950 min-h-screen flex flex-col antialiased relative overflow-x-hidden">
+<body class="min-h-screen flex flex-col justify-between">
 
-  <!-- Ambient visual backdrops -->
-  <div class="ambient-glow-blue"></div>
-  <div class="ambient-glow-amber"></div>
-
-  <!-- ======================================================== -->
-  <!-- 1. AUTHENTICATION MODAL                                  -->
-  <!-- ======================================================== -->
-  <div id="loginScreen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-950/98 backdrop-blur-xl transition-all duration-300">
-    <div class="glass-card w-full max-w-sm p-6 sm:p-7 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
+  <!-- ================= 1. SECURE AUTHENTICATION MODAL ================= -->
+  <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070a12]/95 backdrop-blur-xl">
+    <div class="glass-surface w-full max-w-sm p-6 sm:p-7 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
       
-      <!-- Brand Header -->
-      <div class="text-center mb-6">
-        <div class="inline-flex items-center justify-center w-13 h-13 p-3 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-2xl shadow-xl shadow-blue-500/25 mb-3">
+      <div class="absolute -top-14 -right-14 w-36 h-36 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="text-center mb-6 relative z-10">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-xl shadow-lg shadow-blue-500/25 mb-3">
           T
         </div>
-        <h1 class="text-lg font-bold tracking-tight text-white">TARA WORKSPACE</h1>
-        <p class="text-[11px] font-semibold text-blue-400 uppercase tracking-wider mt-0.5">Forever Business Owner (FBO)</p>
-        <p class="text-[10px] text-slate-500">Accountability & Performance Governance</p>
+        <h1 class="text-lg font-bold text-white tracking-wide">TARA WORKSPACE</h1>
+        <p class="text-[10px] text-blue-400 mt-0.5 uppercase tracking-wider font-semibold">FBO Mobile Enterprise Hub</p>
       </div>
 
-      <!-- Auth Form -->
-      <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-3.5">
+      <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4 relative z-10">
         <div>
-          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">FBO Email ID</label>
+          <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Registered Email</label>
           <div class="relative">
             <i class="fa-regular fa-envelope absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
-            <input type="email" id="inputEmail" required class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition-colors" placeholder="your-email@gmail.com">
+            <input type="email" id="fboEmail" required class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-100 transition-colors" placeholder="your-email@gmail.com">
           </div>
         </div>
 
         <div>
-          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Passcode</label>
+          <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Passcode</label>
           <div class="relative">
             <i class="fa-solid fa-lock absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
-            <input type="password" id="inputPasscode" required class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 transition-colors" placeholder="••••••••">
+            <input type="password" id="fboPass" required class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-100 transition-colors" placeholder="••••••••">
           </div>
         </div>
 
-        <button type="submit" id="btnAuth" class="w-full mt-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-95 transition-all font-bold text-xs py-3.5 rounded-xl shadow-lg shadow-blue-600/30 text-white flex items-center justify-center gap-2">
-          <span id="btnAuthLabel">Verify & Enter Dashboard</span>
+        <button type="submit" id="authSubmitBtn" class="w-full mt-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-95 transition-all font-bold text-sm py-3.5 rounded-xl shadow-lg shadow-blue-600/30 text-white flex items-center justify-center space-x-2">
+          <span id="btnAuthText">Sign In to Hub</span>
           <i id="btnAuthSpinner" class="fa-solid fa-circle-notch fa-spin hidden text-xs"></i>
         </button>
-
         <p id="authErrorMsg" class="text-xs text-rose-400 text-center hidden font-medium pt-1"></p>
       </form>
-
-      <!-- Security Stamp -->
-      <div class="mt-5 pt-4 border-t border-slate-800/70 text-center">
-        <span class="text-[10px] text-slate-500 inline-flex items-center gap-1.5">
-          <i class="fa-solid fa-shield-halved text-blue-400"></i> Secure SSO Session Sync
-        </span>
-      </div>
     </div>
   </div>
 
-  <!-- ======================================================== -->
-  <!-- 2. MAIN APP SHELL                                        -->
-  <!-- ======================================================== -->
-  <div id="appContainer" class="hidden flex-1 flex flex-col min-h-screen pb-24 z-10">
+  <!-- ================= 2. MAIN HUB INTERFACE ================= -->
+  <div id="mainApp" class="hidden flex-1 flex flex-col pb-24">
 
-    <!-- Top Sticky Mobile Header -->
-    <header class="bg-brand-950/92 backdrop-blur-md border-b border-slate-800/80 px-4 py-3 sticky top-0 z-40 flex items-center justify-between">
-      <div class="flex items-center space-x-2.5">
-        <div class="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center font-black text-xs" id="navAvatar">
-          T
+    <!-- Top Master Header -->
+    <header class="master-header-gradient rounded-2xl mx-3 mt-3 p-4 text-white">
+      <div class="flex items-center justify-between mb-3">
+        <div class="inline-flex items-center gap-2 bg-black/30 border border-white/15 px-2.5 py-1 rounded-full text-[11px] font-extrabold tracking-wider">
+          <span class="pulse-dot"></span>
+          <span>LIVE TELEMETRY</span>
         </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="refreshLiveTelemetry()" id="refreshBtn" title="Sync Telemetry" class="bg-white/10 hover:bg-white/20 active:scale-95 border border-white/20 px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
+            <i class="fa-solid fa-arrows-rotate" id="refreshIcon"></i>
+            <span>Sync</span>
+          </button>
+          <button onclick="handleLogout()" title="Logout" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 px-2 py-1 rounded-lg text-xs font-bold transition">
+            <i class="fa-solid fa-power-off"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
         <div>
-          <h2 class="text-xs font-extrabold text-white truncate max-w-[140px] sm:max-w-none" id="navUserName">FBO Member</h2>
-          <div class="flex items-center space-x-2 mt-0.5">
-            <span class="text-[10px] text-slate-400 font-medium" id="navWorkingType">Full-Time</span>
-            <span class="text-slate-600">•</span>
-            <!-- Continuous Fire Streak Counter -->
-            <span class="inline-flex items-center gap-1 text-[11px] font-black text-orange-400">
-              🔥 <span id="topStreakNum">0</span> Day Streak
+          <h2 class="text-lg font-black tracking-tight" id="topUserName">Loading...</h2>
+          <div class="flex items-center gap-2 text-xs text-slate-300 mt-0.5">
+            <span id="topWorkingType" class="text-blue-300 font-bold uppercase text-[10px]">Full-Time</span>
+            <span>•</span>
+            <span class="inline-flex items-center gap-1 text-orange-400 font-black text-[11px]">
+              🔥 <span id="topStreakCount">0</span> Day Streak
             </span>
           </div>
         </div>
+        <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center font-black text-sm text-blue-200" id="topAvatar">
+          T
+        </div>
       </div>
 
-      <!-- Action buttons: Sync & Logout -->
-      <div class="flex items-center space-x-1.5">
-        <button onclick="refreshData()" title="Sync Telemetry" class="w-8 h-8 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white flex items-center justify-center text-xs transition">
-          <i class="fa-solid fa-arrows-rotate" id="refreshIcon"></i>
-        </button>
-        <button onclick="handleLogout()" title="Logout" class="w-8 h-8 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 flex items-center justify-center text-xs transition">
-          <i class="fa-solid fa-power-off"></i>
-        </button>
+      <div class="flex justify-between items-center bg-black/25 border border-white/10 rounded-xl px-3 py-1.5 mt-3 text-[11px] font-semibold">
+        <span class="text-blue-200 font-mono" id="sessionDateLabel">Shift Date: Today</span>
+        <span class="text-slate-300 font-mono" id="syncStatus">Synced</span>
       </div>
     </header>
 
-    <!-- ======================================================== -->
-    <!-- VIEW 1: TODAY'S LIVE LOGIN TELEMETRY                     -->
-    <!-- ======================================================== -->
-    <main id="tabViewLive" class="flex-1 p-4 max-w-md mx-auto w-full space-y-4">
+    <!-- ================= VIEW 1: TODAY'S LIVE LOGIN ================= -->
+    <main id="view-login" class="flex-1 p-3 max-w-md mx-auto w-full space-y-3">
       
-      <!-- Live Status Banner -->
-      <div class="flex items-center justify-between text-xs px-1">
-        <div class="flex items-center space-x-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="font-bold text-slate-300 uppercase tracking-wider text-[10px]">Live Production Telemetry</span>
-        </div>
-        <span class="text-slate-400 font-mono text-[11px]" id="liveDateDisplay">Today</span>
-      </div>
-
-      <!-- Main Live Production Card -->
-      <div class="glass-card p-5 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
-        
-        <!-- Header Target Info -->
+      <!-- Primary Live Shift Card -->
+      <div class="glass-surface p-5 rounded-2xl space-y-4 shadow-xl">
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <div>
-            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Attendance Target</span>
+            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Attendance Rule</span>
             <p class="text-xs font-bold text-white mt-0.5" id="targetRequirementLabel">> 7h 01m for Present</p>
           </div>
-          <span id="liveBadgeStatus" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-800 text-slate-300">Evaluating...</span>
+          <span id="liveBadgeStatus" class="badge badge-progress text-xs font-bold">
+            Evaluating...
+          </span>
         </div>
 
-        <!-- Net Production Hero Box -->
-        <div class="hero-production-box rounded-2xl p-4 text-center relative overflow-hidden shadow-inner">
-          <span class="text-[10px] font-black uppercase tracking-widest text-emerald-300">Net Production Time</span>
-          <p class="text-3xl font-black text-white font-mono mt-1" id="liveNetProduction">00:00:00</p>
+        <!-- Hero Net Production Box -->
+        <div class="hero-net-container rounded-2xl p-4 text-center">
+          <span class="text-[10px] font-black uppercase tracking-widest text-emerald-300 block mb-1">Net Production Time</span>
+          <p class="text-4xl font-extrabold text-white font-mono tracking-tight" id="liveNetProduction">00:00:00</p>
           
-          <!-- Progress towards threshold -->
-          <div class="w-full bg-slate-900/80 h-1.5 rounded-full mt-3 overflow-hidden">
+          <div class="w-full bg-slate-900/80 h-2 rounded-full mt-3.5 overflow-hidden p-0.5 border border-slate-800">
             <div id="liveTargetProgressBar" class="bg-gradient-to-r from-blue-500 to-emerald-400 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
           </div>
-          <div class="flex justify-between items-center text-[10px] text-slate-400 font-mono mt-1.5 px-0.5">
+          <div class="flex justify-between items-center text-[10px] text-slate-400 font-mono mt-2 px-1">
             <span>00:00:00</span>
-            <span id="targetThresholdGoal">Goal: 07:01:00</span>
+            <span id="targetThresholdGoal" class="text-emerald-300 font-semibold">Goal: 07:01:00</span>
           </div>
         </div>
 
-        <!-- Break & Gross Grid -->
-        <div class="grid grid-cols-2 gap-3 text-xs">
-          <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800/80">
+        <!-- Break & Total Grid -->
+        <div class="grid grid-cols-2 gap-2.5 text-xs">
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
             <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wider mb-1">Total Break</span>
-            <span class="font-mono text-sm font-bold text-slate-200" id="liveTotalBreak">00:00:00</span>
+            <span class="font-mono text-sm font-bold text-slate-100" id="liveTotalBreak">00:00:00</span>
           </div>
-          <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800/80">
+          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
             <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wider mb-1">Gross Login</span>
-            <span class="font-mono text-sm font-bold text-slate-200" id="liveTotalLogin">00:00:00</span>
+            <span class="font-mono text-sm font-bold text-slate-100" id="liveTotalLogin">00:00:00</span>
           </div>
         </div>
 
-        <!-- First Login & Shift Remarks -->
-        <div class="bg-slate-950/70 p-3 rounded-2xl border border-slate-800/80 text-xs space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-slate-400 text-[11px]">First Login Time:</span>
-            <span class="font-mono font-bold text-slate-200" id="liveFirstLogin">--:--</span>
-          </div>
-          <div class="flex items-center justify-between border-t border-slate-800/60 pt-2">
-            <span class="text-slate-400 text-[11px]">Shift Status:</span>
-            <span class="font-semibold text-emerald-400 text-[11px]" id="liveRemarks">Active Shift Recorded</span>
-          </div>
+        <!-- First Login Recorded Strip -->
+        <div class="bg-slate-900/80 px-3.5 py-2.5 rounded-xl border border-slate-800 text-xs flex items-center justify-between">
+          <span class="text-slate-400 text-[11px] font-medium">Shift Login Time:</span>
+          <span class="font-mono font-bold text-slate-200" id="liveFirstLogin">--:--</span>
         </div>
       </div>
 
-      <!-- Protocol Notice -->
+      <!-- Shift Rule Disclaimer -->
       <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800/80 text-[11px] text-slate-400 space-y-1">
         <div class="flex items-center gap-1.5 font-bold text-slate-300">
           <i class="fa-solid fa-clock-rotate-left text-blue-400"></i>
-          <span>Discipline Punctuality Rule</span>
+          <span>Discipline & Shift Threshold</span>
         </div>
         <p class="leading-relaxed">
-          Attendance requires exceeding the target by at least 1 minute (Part-Time: <strong>&gt;4h 01m</strong>, Full-Time: <strong>&gt;7h 01m</strong>). Shift resets daily at 12:00 AM.
+          Must exceed target by 1 minute minimum (Part-Time: <strong>&gt;4h 01m</strong>, Full-Time: <strong>&gt;7h 01m</strong>) for Present status. Resets daily at 12:00 AM.
         </p>
       </div>
     </main>
 
-    <!-- ======================================================== -->
-    <!-- VIEW 2: ACCOUNTABILITY PROFILE (STRIKE + FLAG)           -->
-    <!-- ======================================================== -->
-    <main id="tabViewProfile" class="hidden flex-1 p-4 max-w-md mx-auto w-full space-y-4">
+    <!-- ================= VIEW 2: ACCOUNTABILITY PROFILE ================= -->
+    <main id="view-profile" class="hidden flex-1 p-3 max-w-md mx-auto w-full space-y-3">
       
-      <!-- Gamified Fire Streak Banner (Sundays automatically excluded) -->
-      <div class="glass-card p-4 rounded-3xl border border-orange-500/30 bg-gradient-to-r from-orange-950/30 via-slate-900 to-slate-900 flex items-center justify-between shadow-xl">
+      <!-- Gamified Fire Streak Banner -->
+      <div class="glass-surface p-4 rounded-2xl border border-orange-500/30 bg-gradient-to-r from-orange-950/30 via-slate-900 to-slate-900 flex items-center justify-between shadow-xl">
         <div class="flex items-center space-x-3.5">
-          <div class="w-11 h-11 rounded-2xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-xl">🔥</div>
+          <div class="w-11 h-11 rounded-2xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-xl shadow-inner">🔥</div>
           <div>
             <div class="flex items-baseline space-x-1.5">
               <span class="text-xl font-black text-orange-400 font-mono" id="mainStreakNum">0</span>
-              <span class="text-xs font-bold text-orange-200 uppercase tracking-wide">Days Continuous Streak</span>
+              <span class="text-xs font-bold text-orange-200 uppercase tracking-wide">Days Discipline Streak</span>
             </div>
-            <p class="text-[10px] text-slate-400">Company Sundays excluded automatically.</p>
+            <p class="text-[10px] text-slate-400 mt-0.5">Company Sundays excluded automatically.</p>
           </div>
         </div>
         <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-orange-500/15 text-orange-300 border border-orange-500/30">Active</span>
       </div>
 
-      <!-- SYSTEM 1: ATTENDANCE STRIKE SYSTEM -->
-      <div class="glass-card p-5 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
+      <!-- SYSTEM 1: ATTENDANCE STRIKE ENGINE -->
+      <div class="glass-surface p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <div class="flex items-center space-x-2">
             <i class="fa-solid fa-user-clock text-amber-400 text-sm"></i>
             <h3 class="font-bold text-xs text-white uppercase tracking-wider">Attendance Strike Engine</h3>
           </div>
-          <span class="text-[9px] text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">Discipline Only</span>
+          <span id="strikeLedgerBadge" class="text-[10px] font-bold px-2.5 py-0.5 rounded border bg-emerald-500/10 text-emerald-400 border-emerald-500/30">
+            0 Strike (Clean)
+          </span>
         </div>
 
         <div class="flex items-baseline justify-between">
@@ -292,7 +279,7 @@
             <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Active Strikes</span>
             <div class="flex items-baseline space-x-1.5 mt-0.5">
               <span class="text-3xl font-black text-amber-400 font-mono" id="valStrikes">0</span>
-              <span class="text-[11px] text-slate-500">/ 4 max</span>
+              <span class="text-[11px] text-slate-500 font-mono">/ 4 max</span>
             </div>
           </div>
           <div class="text-right">
@@ -303,41 +290,37 @@
 
         <!-- 4-Level Strike Progress Bar -->
         <div class="grid grid-cols-4 gap-1.5">
-          <div id="sb1" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
-          <div id="sb2" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
-          <div id="sb3" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
-          <div id="sb4" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
-        </div>
-        <div class="flex justify-between text-[9px] text-slate-500 uppercase font-semibold px-0.5">
-          <span>1: Warning</span>
-          <span>2: Meeting</span>
-          <span>3: Access</span>
-          <span>4: Term</span>
+          <div id="sb1" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
+          <div id="sb2" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
+          <div id="sb3" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
+          <div id="sb4" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
         </div>
 
-        <div class="bg-slate-950/70 p-3 rounded-2xl border border-slate-800/80 text-[11px] space-y-1.5">
-          <div class="flex justify-between text-slate-400">
-            <span>Consistent Weeks (Recovery):</span>
-            <span class="text-white font-bold"><span id="valConsistent">0</span> / 3</span>
+        <!-- Recovery Tracker Box (Under Watch is completely removed) -->
+        <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-[11px] space-y-2">
+          <div class="flex justify-between items-center text-slate-400">
+            <span>Recovery Target (Consistent Weeks):</span>
+            <span class="text-white font-bold"><span id="valConsistent" class="text-emerald-400">0</span> / 3 Weeks</span>
           </div>
-          <div class="flex justify-between text-slate-400">
-            <span>Under Watch Triggers:</span>
-            <span class="text-amber-400 font-bold" id="valUnderWatch">0</span>
+          <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden">
+            <div id="recoveryProgressBar" class="bg-emerald-400 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
           </div>
-          <p class="text-[9px] text-slate-500 pt-1 border-t border-slate-800/60 italic">
-            * 3 consecutive consistent weeks removes 1 strike. 4 strikes = Termination.
+          <p class="text-[10px] text-slate-500 pt-1 border-t border-slate-800/80">
+            * 3 consecutive consistent weeks removes 1 Strike (-1 Strike).
           </p>
         </div>
       </div>
 
-      <!-- SYSTEM 2: PERFORMANCE FLAG SYSTEM -->
-      <div class="glass-card p-5 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
+      <!-- SYSTEM 2: PERFORMANCE FLAG ENGINE -->
+      <div class="glass-surface p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <div class="flex items-center space-x-2">
             <i class="fa-solid fa-chart-line text-blue-400 text-sm"></i>
             <h3 class="font-bold text-xs text-white uppercase tracking-wider">Performance Flag Engine</h3>
           </div>
-          <span class="text-[9px] text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">Quality & Funnel</span>
+          <span id="flagLedgerBadge" class="text-[10px] font-bold px-2.5 py-0.5 rounded border bg-blue-500/10 text-blue-400 border-blue-500/30">
+            0 Flag (Clean)
+          </span>
         </div>
 
         <div class="flex items-baseline justify-between">
@@ -345,7 +328,7 @@
             <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Cumulative Flags</span>
             <div class="flex items-baseline space-x-1.5 mt-0.5">
               <span class="text-3xl font-black text-rose-500 font-mono" id="valFlags">0</span>
-              <span class="text-[11px] text-slate-500">/ 4 max</span>
+              <span class="text-[11px] text-slate-500 font-mono">/ 4 max</span>
             </div>
           </div>
           <div class="text-right">
@@ -356,40 +339,31 @@
 
         <!-- 4-Level Flag Progress Bar -->
         <div class="grid grid-cols-4 gap-1.5">
-          <div id="fb1" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
-          <div id="fb2" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
-          <div id="fb3" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
-          <div id="fb4" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
-        </div>
-        <div class="flex justify-between text-[9px] text-slate-500 uppercase font-semibold px-0.5">
-          <span>1: Warning</span>
-          <span>2: Mgr Rev</span>
-          <span>3: Final</span>
-          <span>4: Alloc Rev</span>
+          <div id="fb1" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
+          <div id="fb2" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
+          <div id="fb3" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
+          <div id="fb4" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
         </div>
 
-        <div class="bg-slate-950/70 p-3 rounded-2xl border border-slate-800/80 text-[11px] space-y-1.5">
+        <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-[11px] space-y-1.5">
           <div class="flex justify-between text-slate-400">
-            <span>Weekly Funnel Rating:</span>
-            <span class="text-blue-400 font-bold" id="valScoreBand">Good Performance</span>
+            <span>Weekly Review Status:</span>
+            <span class="text-blue-400 font-bold" id="valScoreBand">Lead Allocation Review</span>
           </div>
-          <p class="text-[9px] text-slate-500 pt-1 border-t border-slate-800/60 italic">
-            * 3 × Good Performance removes 1 flag. 4 flags = Lead Allocation Review.
+          <p class="text-[10px] text-slate-500 pt-1 border-t border-slate-800/80">
+            * 3 &times; Good Performance removes 1 Flag (-1 Flag). 4 Flags = Allocation Review.
           </p>
         </div>
       </div>
-
     </main>
 
-    <!-- ======================================================== -->
-    <!-- 3. BOTTOM NATIVE MOBILE TAB BAR                          -->
-    <!-- ======================================================== -->
-    <nav class="fixed bottom-0 left-0 right-0 z-40 bg-brand-950/95 backdrop-blur-xl border-t border-slate-800/90 max-w-md mx-auto flex items-center justify-around py-2 px-4 shadow-2xl">
-      <button onclick="navigateTab('live')" id="btnTabLive" class="flex-1 flex flex-col items-center justify-center py-1.5 text-blue-500 font-bold text-xs transition-colors">
+    <!-- Bottom Native Mobile Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 z-40 bg-[#070a12]/95 backdrop-blur-xl border-t border-slate-800 max-w-md mx-auto flex items-center justify-around py-2.5 px-4 shadow-2xl">
+      <button onclick="navigateTab('login')" id="btnTabLogin" class="flex-1 flex flex-col items-center justify-center py-1 text-blue-500 font-bold text-xs transition">
         <i class="fa-solid fa-clock text-base mb-1"></i>
         <span>Live Login</span>
       </button>
-      <button onclick="navigateTab('profile')" id="btnTabProfile" class="flex-1 flex flex-col items-center justify-center py-1.5 text-slate-500 font-bold text-xs transition-colors hover:text-slate-300">
+      <button onclick="navigateTab('profile')" id="btnTabProfile" class="flex-1 flex flex-col items-center justify-center py-1 text-slate-500 font-bold text-xs transition hover:text-slate-300">
         <i class="fa-solid fa-shield-halved text-base mb-1"></i>
         <span>Accountability</span>
       </button>
@@ -397,19 +371,16 @@
 
   </div>
 
-  <!-- ======================================================== -->
-  <!-- 4. CONTROLLER & BUSINESS LOGIC                           -->
-  <!-- ======================================================== -->
+  <!-- ================= 3. CLIENT CONTROLLER & DATA ENGINE ================= -->
   <script>
-    // Live Google Apps Script Endpoint deployed from your Google Sheet
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlIyDugTAU-codhmJZ7OH_Q-5RYW6blDidh8uBWw7Nkka6-KcI_5Dr6Qx-cJIkefe2/exec";
-    const SESSION_STORAGE_KEY = "tara_fbo_session_v5";
+    const SESSION_STORE_KEY = "tara_mobile_session_final_v1";
 
-    // Timestamp sanitizer preventing Google Sheets '1899 GMT' formatting artifacts
-    function cleanTime(val) {
+    // Clean Google Sheets 1899 GMT time artifacts
+    function sanitizeTime(val) {
       if (!val) return "00:00:00";
-      const str = String(val).trim();
-      if (str.includes("GMT") || str.includes("1899")) {
+      const s = String(val).trim();
+      if (s.includes("GMT") || s.includes("1899")) {
         const d = new Date(val);
         if (!isNaN(d.getTime())) {
           const hh = String(d.getHours()).padStart(2, '0');
@@ -418,222 +389,241 @@
           return `${hh}:${mm}:${ss}`;
         }
       }
-      return str;
+      return s;
     }
 
-    // Convert time string (HH:MM:SS) to total seconds
-    function parseTimeToSeconds(timeStr) {
-      if (!timeStr || !timeStr.includes(":")) return 0;
-      const parts = timeStr.split(":");
-      return (parseInt(parts[0], 10) || 0) * 3600 +
-             (parseInt(parts[1], 10) || 0) * 60 +
-             (parseInt(parts[2], 10) || 0);
+    // High-Resilience Dual Transport Engine (JSONP Primary with Fetch Fallback)
+    function dispatchDataRequest(email, password, onSuccess, onError) {
+      let isResolved = false;
+      const cleanEmail = email.trim();
+      const cleanPass = password.trim();
+
+      const cbName = `tara_fbo_jsonp_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+
+      const fallbackTimer = setTimeout(() => {
+        if (!isResolved) {
+          isResolved = true;
+          cleanupScript(cbName);
+          // Try standard fetch as secondary fallback
+          fetch(`${SCRIPT_URL}?action=login&email=${encodeURIComponent(cleanEmail)}&password=${encodeURIComponent(cleanPass)}`)
+            .then(res => res.json())
+            .then(data => onSuccess(data))
+            .catch(() => onError("Connection timeout. Please check your internet connection."));
+        }
+      }, 7000);
+
+      window[cbName] = function(response) {
+        if (isResolved) return;
+        isResolved = true;
+        clearTimeout(fallbackTimer);
+        cleanupScript(cbName);
+        onSuccess(response);
+      };
+
+      const script = document.createElement('script');
+      script.id = cbName;
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = `${SCRIPT_URL}?action=login&email=${encodeURIComponent(cleanEmail)}&password=${encodeURIComponent(cleanPass)}&callback=${cbName}&_z=${Date.now()}`;
+
+      script.onerror = function() {
+        if (!isResolved) {
+          isResolved = true;
+          clearTimeout(fallbackTimer);
+          cleanupScript(cbName);
+          // Fallback to fetch on script error
+          fetch(`${SCRIPT_URL}?action=login&email=${encodeURIComponent(cleanEmail)}&password=${encodeURIComponent(cleanPass)}`)
+            .then(res => res.json())
+            .then(data => onSuccess(data))
+            .catch(() => onError("Failed to communicate with enterprise server."));
+        }
+      };
+
+      document.head.appendChild(script);
     }
 
-    // Handle Authentication submission
+    function cleanupScript(id) {
+      try { delete window[id]; } catch (e) {}
+      const elem = document.getElementById(id);
+      if (elem && elem.parentNode) elem.parentNode.removeChild(elem);
+    }
+
     function handleAuthSubmit(e) {
       e.preventDefault();
-      const email = document.getElementById("inputEmail").value.trim();
-      const passcode = document.getElementById("inputPasscode").value.trim();
-      const btn = document.getElementById("btnAuth");
-      const btnLabel = document.getElementById("btnAuthLabel");
+      const email = document.getElementById("fboEmail").value.trim();
+      const pass = document.getElementById("fboPass").value.trim();
+      const btn = document.getElementById("authSubmitBtn");
+      const btnText = document.getElementById("btnAuthText");
       const spinner = document.getElementById("btnAuthSpinner");
-      const errorMsg = document.getElementById("authErrorMsg");
+      const err = document.getElementById("authErrorMsg");
 
-      btnLabel.innerText = "Authenticating...";
+      btnText.innerText = "Authenticating...";
       spinner.classList.remove("hidden");
       btn.disabled = true;
-      errorMsg.classList.add("hidden");
+      err.classList.add("hidden");
 
-      const apiUrl = `${SCRIPT_URL}?action=login&email=${encodeURIComponent(email)}&password=${encodeURIComponent(passcode)}`;
-
-      fetch(apiUrl)
-        .then(response => {
-          if (!response.ok) throw new Error("Network HTTP error: " + response.status);
-          return response.json();
-        })
-        .then(data => {
-          btnLabel.innerText = "Verify & Enter Dashboard";
+      dispatchDataRequest(email, pass, 
+        function(data) {
+          btnText.innerText = "Sign In to Hub";
           spinner.classList.add("hidden");
           btn.disabled = false;
 
-          if (data.status === "success") {
-            // Cache active session
-            localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(data));
-            localStorage.setItem("tara_cached_auth_email", email);
-            localStorage.setItem("tara_cached_auth_pass", passcode);
-            renderDashboard(data);
+          if (data && data.status === "success") {
+            const sessionPayload = { email: email, pass: pass, payload: data };
+            localStorage.setItem(SESSION_STORE_KEY, JSON.stringify(sessionPayload));
+            renderInterface(data);
           } else {
-            errorMsg.innerText = data.message || "Invalid Email ID or Passcode.";
-            errorMsg.classList.remove("hidden");
+            err.innerText = (data && data.message) ? data.message : "Invalid Email or Passcode.";
+            err.classList.remove("hidden");
           }
-        })
-        .catch(err => {
-          btnLabel.innerText = "Verify & Enter Dashboard";
+        },
+        function(errMsg) {
+          btnText.innerText = "Sign In to Hub";
           spinner.classList.add("hidden");
           btn.disabled = false;
-          errorMsg.innerText = "Connection timeout. Please verify internet connectivity.";
-          errorMsg.classList.remove("hidden");
-        });
+          err.innerText = errMsg;
+          err.classList.remove("hidden");
+        }
+      );
     }
 
-    // Render Portal Telemetry & Profile
-    function renderDashboard(data) {
-      document.getElementById("loginScreen").classList.add("hidden");
-      document.getElementById("appContainer").classList.remove("hidden");
+    function refreshLiveTelemetry() {
+      const sessionData = JSON.parse(localStorage.getItem(SESSION_STORE_KEY) || "{}");
+      if (!sessionData.email) return;
+
+      const icon = document.getElementById("refreshIcon");
+      icon.classList.add("fa-spin");
+      document.getElementById("syncStatus").innerText = "Syncing...";
+
+      dispatchDataRequest(sessionData.email, sessionData.pass,
+        function(data) {
+          icon.classList.remove("fa-spin");
+          if (data && data.status === "success") {
+            sessionData.payload = data;
+            localStorage.setItem(SESSION_STORE_KEY, JSON.stringify(sessionData));
+            renderInterface(data);
+            document.getElementById("syncStatus").innerText = `Synced at ${new Date().toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit', hour12:true})}`;
+          }
+        },
+        function() {
+          icon.classList.remove("fa-spin");
+          document.getElementById("syncStatus").innerText = "Sync Failed";
+        }
+      );
+    }
+
+    function renderInterface(data) {
+      document.getElementById("loginModal").classList.add("hidden");
+      document.getElementById("mainApp").classList.remove("hidden");
 
       const profile = data.profile || {};
-      const fboName = profile.name || data.fboName || "FBO Member";
-      const workingType = profile.workingType || "Full-Time";
-      const isPt = workingType.toLowerCase().includes("part");
+      const name = profile.name || "FBO Member";
+      document.getElementById("topUserName").innerText = name;
+      document.getElementById("topWorkingType").innerText = profile.workingType || "Full-Time";
+      document.getElementById("topAvatar").innerText = name.charAt(0).toUpperCase();
 
-      document.getElementById("navUserName").innerText = fboName;
-      document.getElementById("navWorkingType").innerText = workingType;
-      document.getElementById("navAvatar").innerText = fboName.charAt(0).toUpperCase();
-
-      // Fire Streak Engine
-      const streak = data.streak || data.streakCount || 0;
-      document.getElementById("topStreakNum").innerText = streak;
+      const streak = data.streak || 0;
+      document.getElementById("topStreakCount").innerText = streak;
       document.getElementById("mainStreakNum").innerText = streak;
 
-      // 1. Live Telemetry View
-      const live = data.live || data.latestTelemetry || {};
-      const netTimeStr = cleanTime(live.netLogin || "00:00:00");
-      const netSeconds = parseTimeToSeconds(netTimeStr);
-      
-      // Strict Threshold Rules: Part-Time > 4h 01m (14460s), Full-Time > 7h 01m (25260s)
-      const targetMinSeconds = isPt ? (4 * 3600 + 60) : (7 * 3600 + 60);
-      const targetBaseSeconds = isPt ? 14400 : 25200;
-      const isTargetMet = netSeconds >= targetMinSeconds;
-      const progressPercentage = Math.min(Math.round((netSeconds / targetBaseSeconds) * 100), 100);
-
+      // 1. Live Shift Telemetry Binding
+      const live = data.live || {};
+      const isPt = (profile.workingType || "Full-Time").toLowerCase().includes("part");
       document.getElementById("targetRequirementLabel").innerText = isPt ? "> 4h 01m for Present" : "> 7h 01m for Present";
       document.getElementById("targetThresholdGoal").innerText = isPt ? "Goal: 04:01:00" : "Goal: 07:01:00";
-      document.getElementById("liveDateDisplay").innerText = String(live.date || "Today").split(" ")[0].replace(/T.*/, '');
+      
+      const displayDate = live.date ? String(live.date).split(" ")[0].replace(/T.*/, '') : "Today";
+      document.getElementById("sessionDateLabel").innerText = `Shift Date: ${displayDate}`;
 
-      document.getElementById("liveNetProduction").innerText = netTimeStr;
-      document.getElementById("liveTotalBreak").innerText = cleanTime(live.totalBreak);
-      document.getElementById("liveTotalLogin").innerText = cleanTime(live.totalLogin);
-      document.getElementById("liveFirstLogin").innerText = cleanTime(live.loginTime || live.time);
-      document.getElementById("liveTargetProgressBar").style.width = progressPercentage + "%";
+      document.getElementById("liveNetProduction").innerText = sanitizeTime(live.netLogin);
+      document.getElementById("liveTotalBreak").innerText = sanitizeTime(live.totalBreak);
+      document.getElementById("liveTotalLogin").innerText = sanitizeTime(live.totalLogin);
+      document.getElementById("liveFirstLogin").innerText = sanitizeTime(live.loginTime);
 
-      const badge = document.getElementById("liveBadgeStatus");
-      if (isTargetMet) {
-        badge.innerText = isPt ? "✅ Part-Time Met" : "⭐ Full Day Met";
-        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400";
-      } else if (netSeconds > 0) {
-        const hrsDone = Math.floor(netSeconds / 3600);
-        badge.innerText = `⏳ In Progress (${hrsDone}h Done)`;
-        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-blue-500/15 border border-blue-500/30 text-blue-400";
-      } else {
-        badge.innerText = "Not Logged Today";
-        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-slate-800 text-slate-400";
-      }
+      const badgeElem = document.getElementById("liveBadgeStatus");
+      badgeElem.innerText = live.badge || "In Shift";
+      badgeElem.className = `badge ${live.badgeClass || (live.isTargetMet ? "badge-fullday" : "badge-progress")} text-xs font-bold`;
 
-      document.getElementById("liveRemarks").innerText = isTargetMet ? "Present Threshold Achieved" : (netSeconds > 0 ? "Shift Underway" : "No Shift Recorded Yet");
+      document.getElementById("liveTargetProgressBar").style.width = (live.progressPct || 0) + "%";
 
-      // 2. Attendance Strike Engine (Discipline)
-      const attendance = data.attendance || {};
-      const strikes = parseInt(attendance.strikes, 10) || 0;
+      // 2. Attendance Strikes & Recovery Tracker
+      const strikes = parseInt(data.attendance?.strikes, 10) || 0;
+      const consistentWeeks = parseInt(data.attendance?.consistentWeeks, 10) || 0;
       document.getElementById("valStrikes").innerText = strikes;
-      document.getElementById("valStrikeStatus").innerText = attendance.status || "Good Standing";
-      document.getElementById("valConsistent").innerText = attendance.consistentWeeks || 0;
-      document.getElementById("valUnderWatch").innerText = attendance.underWatch || attendance.underWatchCount || 0;
+      document.getElementById("valStrikeStatus").innerText = data.attendance?.status || "Good Standing";
+      document.getElementById("valConsistent").innerText = consistentWeeks;
 
-      for (let s = 1; s <= 4; s++) {
-        const el = document.getElementById("sb" + s);
-        if (s <= strikes) {
-          el.className = (strikes >= 4) ? "h-2 rounded-full bg-rose-500 transition-colors" :
-                         (strikes >= 3) ? "h-2 rounded-full bg-orange-500 transition-colors" :
-                         "h-2 rounded-full bg-amber-400 transition-colors";
-        } else {
-          el.className = "h-2 rounded-full bg-slate-800 transition-colors";
-        }
+      const recProgress = Math.min(Math.round((consistentWeeks / 3) * 100), 100);
+      document.getElementById("recoveryProgressBar").style.width = recProgress + "%";
+
+      const strLedger = document.getElementById("strikeLedgerBadge");
+      if (strikes > 0) {
+        strLedger.className = "text-[10px] font-bold px-2.5 py-0.5 rounded border bg-rose-500/10 text-rose-400 border-rose-500/30";
+        strLedger.innerText = `+${strikes} Strike Active`;
+      } else {
+        strLedger.className = "text-[10px] font-bold px-2.5 py-0.5 rounded border bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
+        strLedger.innerText = "0 Strike (Clean)";
       }
 
-      // 3. Performance Flag Engine (Quality & Conversions)
-      const performance = data.performance || {};
-      const flags = parseInt(performance.flags, 10) || 0;
-      document.getElementById("valFlags").innerText = flags;
-      document.getElementById("valFlagStatus").innerText = performance.status || "Active / Normal";
-      document.getElementById("valScoreBand").innerText = performance.scoreBand || performance.currentRating || "Good Performance";
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById("sb" + i).className = i <= strikes ? "h-2 rounded-full bg-amber-400 transition-colors duration-300" : "h-2 rounded-full bg-slate-800 transition-colors duration-300";
+      }
 
-      for (let f = 1; f <= 4; f++) {
-        const fl = document.getElementById("fb" + f);
-        if (f <= flags) {
-          fl.className = (flags >= 4) ? "h-2 rounded-full bg-rose-600 transition-colors" :
-                         (flags >= 2) ? "h-2 rounded-full bg-rose-500 transition-colors" :
-                         "h-2 rounded-full bg-amber-500 transition-colors";
-        } else {
-          fl.className = "h-2 rounded-full bg-slate-800 transition-colors";
-        }
+      // 3. Performance Flags Engine
+      const flags = parseInt(data.performance?.flags, 10) || 0;
+      document.getElementById("valFlags").innerText = flags;
+      document.getElementById("valFlagStatus").innerText = data.performance?.status || "Active / Normal";
+      document.getElementById("valScoreBand").innerText = data.performance?.scoreBand || data.performance?.currentReview || "Good Standing";
+
+      const flgLedger = document.getElementById("flagLedgerBadge");
+      if (flags > 0) {
+        flgLedger.className = "text-[10px] font-bold px-2.5 py-0.5 rounded border bg-rose-500/10 text-rose-400 border-rose-500/30";
+        flgLedger.innerText = `+${flags} Flag Active`;
+      } else {
+        flgLedger.className = "text-[10px] font-bold px-2.5 py-0.5 rounded border bg-blue-500/10 text-blue-400 border-blue-500/30";
+        flgLedger.innerText = "0 Flag (Clean)";
+      }
+
+      for (let j = 1; j <= 4; j++) {
+        document.getElementById("fb" + j).className = j <= flags ? "h-2 rounded-full bg-rose-500 transition-colors duration-300" : "h-2 rounded-full bg-slate-800 transition-colors duration-300";
       }
     }
 
-    // Tab Navigation
     function navigateTab(tab) {
-      const liveTab = document.getElementById("tabViewLive");
-      const profileTab = document.getElementById("tabViewProfile");
-      const btnLive = document.getElementById("btnTabLive");
+      const vLogin = document.getElementById("view-login");
+      const vProfile = document.getElementById("view-profile");
+      const btnLogin = document.getElementById("btnTabLogin");
       const btnProfile = document.getElementById("btnTabProfile");
 
-      if (tab === 'live') {
-        liveTab.classList.remove("hidden");
-        profileTab.classList.add("hidden");
-        btnLive.className = "flex-1 flex flex-col items-center justify-center py-1.5 text-blue-500 font-bold text-xs transition-colors";
-        btnProfile.className = "flex-1 flex flex-col items-center justify-center py-1.5 text-slate-500 font-bold text-xs transition-colors hover:text-slate-300";
+      if (tab === 'login') {
+        vLogin.classList.remove("hidden");
+        vProfile.classList.add("hidden");
+        btnLogin.className = "flex-1 flex flex-col items-center justify-center py-1 text-blue-500 font-bold text-xs transition";
+        btnProfile.className = "flex-1 flex flex-col items-center justify-center py-1 text-slate-500 font-bold text-xs transition hover:text-slate-300";
       } else {
-        liveTab.classList.add("hidden");
-        profileTab.classList.remove("hidden");
-        btnLive.className = "flex-1 flex flex-col items-center justify-center py-1.5 text-slate-500 font-bold text-xs transition-colors hover:text-slate-300";
-        btnProfile.className = "flex-1 flex flex-col items-center justify-center py-1.5 text-blue-500 font-bold text-xs transition-colors";
+        vLogin.classList.add("hidden");
+        vProfile.classList.remove("hidden");
+        btnLogin.className = "flex-1 flex flex-col items-center justify-center py-1 text-slate-500 font-bold text-xs transition hover:text-slate-300";
+        btnProfile.className = "flex-1 flex flex-col items-center justify-center py-1 text-blue-500 font-bold text-xs transition";
       }
     }
 
-    // Refresh Telemetry Data
-    function refreshData() {
-      const email = localStorage.getItem("tara_cached_auth_email");
-      const pass = localStorage.getItem("tara_cached_auth_pass");
-      const icon = document.getElementById("refreshIcon");
-
-      if (!email || !pass) {
-        location.reload();
-        return;
-      }
-
-      icon.classList.add("fa-spin");
-
-      fetch(`${SCRIPT_URL}?action=login&email=${encodeURIComponent(email)}&password=${encodeURIComponent(pass)}`)
-        .then(res => res.json())
-        .then(data => {
-          icon.classList.remove("fa-spin");
-          if (data.status === "success") {
-            localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(data));
-            renderDashboard(data);
-          }
-        })
-        .catch(() => {
-          icon.classList.remove("fa-spin");
-        });
-    }
-
-    // Terminate Active Session
     function handleLogout() {
-      localStorage.removeItem(SESSION_STORAGE_KEY);
-      localStorage.removeItem("tara_cached_auth_email");
-      localStorage.removeItem("tara_cached_auth_pass");
+      localStorage.removeItem(SESSION_STORE_KEY);
       location.reload();
     }
 
-    // Auto-restore cached session on app launch
+    // Auto-load cached session on startup
     window.addEventListener("DOMContentLoaded", () => {
-      const cachedSession = localStorage.getItem(SESSION_STORAGE_KEY);
-      if (cachedSession) {
+      const savedSession = localStorage.getItem(SESSION_STORE_KEY);
+      if (savedSession) {
         try {
-          const parsed = JSON.parse(cachedSession);
-          renderDashboard(parsed);
-        } catch (e) {
-          localStorage.removeItem(SESSION_STORAGE_KEY);
+          const parsed = JSON.parse(savedSession);
+          if (parsed && parsed.payload) {
+            renderInterface(parsed.payload);
+          }
+        } catch(e) {
+          localStorage.removeItem(SESSION_STORE_KEY);
         }
       }
     });
