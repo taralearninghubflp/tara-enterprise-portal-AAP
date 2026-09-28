@@ -3,537 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TARA Talent Solutions | FBO Performance Portal</title>
-    <!-- Tailwind CSS CDN -->
+    <title>TARA Enterprise Portal | Workspace</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome 6 Free CDN -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        tara: {
-                            50: '#eff6ff',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            950: '#060a12',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #060a12;
-        }
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.72);
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .glass-header {
-            background: rgba(6, 10, 18, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .ambient-glow {
-            position: absolute;
-            filter: blur(80px);
-            pointer-events: none;
-            opacity: 0.22;
-        }
-        /* Custom subtle scrollbar */
-        ::-webkit-scrollbar {
-            width: 5px;
-            height: 5px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #060a12;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #334155;
+        .hero-net-metric {
+            background: linear-gradient(180deg, rgba(6, 78, 59, 0.5) 0%, rgba(2, 44, 34, 0.75) 100%);
+            border: 1.5px solid rgba(16, 185, 129, 0.45);
         }
     </style>
 </head>
-<body class="bg-tara-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden">
+<body class="bg-[#070a12] text-slate-100 min-h-screen flex flex-col antialiased">
 
-    <!-- AMBIENT ACCENT LIGHTS -->
-    <div class="ambient-glow top-0 left-1/4 w-96 h-96 bg-blue-600 rounded-full"></div>
-    <div class="ambient-glow top-1/2 right-10 w-96 h-96 bg-indigo-700 rounded-full"></div>
-
-    <!-- ========================================== -->
-    <!--          1. SECURE LOGIN SCREEN            -->
-    <!-- ========================================== -->
-    <div id="loginScreen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-tara-950/95 backdrop-blur-xl transition-opacity duration-300">
-        <div class="w-full max-w-md glass-panel p-6 sm:p-8 rounded-3xl shadow-2xl relative overflow-hidden border border-slate-800/80">
-            
-            <div class="text-center mb-7">
-                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-extrabold text-2xl shadow-lg shadow-blue-500/25 mb-4">
-                    T
-                </div>
-                <h1 class="text-2xl font-bold tracking-tight text-white">TARA Talent Solutions</h1>
-                <p class="text-xs font-semibold text-blue-400 mt-1 uppercase tracking-wider">FBO Governance & Performance Portal</p>
-                <p class="text-[11px] text-slate-500 mt-0.5">Forever Business Owner Secure Access</p>
+    <!-- ================= 1. SECURE LOGIN SCREEN ================= -->
+    <div id="loginScreen" class="fixed inset-0 z-50 flex items-center justify-center bg-[#070a12]/95 backdrop-blur-xl p-4">
+        <div class="glass-card p-8 rounded-3xl shadow-2xl w-full max-w-md border border-slate-800 relative overflow-hidden">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-2xl shadow-xl shadow-blue-500/20 mb-3">T</div>
+                <h1 class="text-xl font-bold tracking-tight text-white">TARA TALENT SOLUTIONS</h1>
+                <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Enterprise FBO Portal</p>
             </div>
 
-            <!-- Error Notice Box -->
-            <div id="loginError" class="hidden mb-4 p-3.5 bg-rose-500/10 border border-rose-500/30 rounded-2xl text-rose-300 text-xs flex items-center gap-2.5">
-                <i class="fa-solid fa-circle-exclamation text-rose-400 text-sm flex-shrink-0"></i>
-                <span id="errorMessage">Invalid email or password.</span>
-            </div>
-
-            <form id="loginForm" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Registered Email</label>
-                    <div class="relative">
-                        <i class="fa-regular fa-envelope absolute left-4 top-3.5 text-slate-500 text-sm"></i>
-                        <input type="email" id="inputEmail" required class="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-200 transition-colors placeholder-slate-600" placeholder="name@domain.com">
-                    </div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Email ID</label>
+                    <input type="email" id="loginEmail" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-200" placeholder="your-email@gmail.com">
                 </div>
-
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Security Password</label>
-                    <div class="relative">
-                        <i class="fa-solid fa-lock absolute left-4 top-3.5 text-slate-500 text-sm"></i>
-                        <input type="password" id="inputPassword" required class="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-200 transition-colors placeholder-slate-600" placeholder="••••••••">
-                    </div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Password</label>
+                    <input type="password" id="loginPass" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-200" placeholder="••••••••">
                 </div>
-
-                <button type="submit" id="btnAuth" class="w-full mt-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-[0.99] transition font-semibold text-sm py-3.5 rounded-xl shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2 text-white">
-                    <span id="authBtnLabel">Verify & Enter Dashboard</span>
-                    <i id="authSpinner" class="fa-solid fa-circle-notch fa-spin text-sm hidden"></i>
+                <button type="submit" id="loginBtn" class="w-full mt-2 bg-blue-600 hover:bg-blue-500 transition-all font-semibold text-sm py-3.5 rounded-xl shadow-lg shadow-blue-600/30">
+                    Sign In to Workspace
                 </button>
+                <p id="loginError" class="text-xs text-rose-400 text-center hidden font-medium pt-2"></p>
             </form>
-            
-            <div class="mt-6 pt-5 border-t border-slate-800/60 text-center">
-                <span class="text-[11px] text-slate-500 flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-shield-halved text-blue-500"></i> End-to-end encrypted accountability session
-                </span>
-            </div>
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!--       2. MAIN ENTERPRISE APPLICATION       -->
-    <!-- ========================================== -->
+    <!-- ================= 2. UNIFIED WORKSPACE ================= -->
     <div id="appContainer" class="hidden flex-1 flex flex-col min-h-screen">
-        <!-- TOP EXECUTIVE NAVBAR -->
-        <header class="glass-header px-4 sm:px-8 py-3.5 flex items-center justify-between sticky top-0 z-40">
+        
+        <!-- TOP STICKY NAVBAR & VIEW SWITCHER MENU -->
+        <header class="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 sticky top-0 z-40 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-black text-base shadow-md shadow-blue-600/30">
-                    T
-                </div>
+                <div class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center font-black text-sm">T</div>
                 <div>
-                    <h2 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">TARA Workspace</h2>
-                    <span class="text-xs font-semibold text-slate-200 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span id="navFboDisplayName">Authenticating...</span>
-                    </span>
+                    <div class="flex items-center space-x-2">
+                        <span id="navFboName" class="font-bold text-sm text-white">Loading...</span>
+                        <!-- MOTIVATIONAL FIRE STREAK BADGE -->
+                        <span id="streakBadge" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-black bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 text-orange-400">
+                            🔥 <span id="valStreakTop">0</span> Days
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex items-center space-x-2 sm:space-x-3">
-                <button onclick="refreshDashboardData()" title="Sync Latest Data" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-rotate text-xs"></i>
-                </button>
-                <button onclick="handleLogout()" class="px-3.5 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-400 text-xs font-bold transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
-                    <span class="hidden sm:inline">Logout</span>
-                </button>
-            </div>
+            <!-- Page Switch Menu (Live Login, Profile, CRM) -->
+            <nav class="flex items-center space-x-1 bg-slate-900 border border-slate-800 p-1 rounded-xl text-xs font-semibold">
+                <button onclick="switchView('loginview')" id="tab-loginview" class="px-3 py-1.5 rounded-lg transition bg-blue-600 text-white shadow">Live Login</button>
+                <button onclick="switchView('profile')" id="tab-profile" class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white">Profile (Strikes & Flags)</button>
+                <button onclick="switchView('crm')" id="tab-crm" class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white">CRM</button>
+            </nav>
+
+            <button onclick="handleLogout()" title="Logout" class="text-xs font-semibold px-2.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-lg">
+                <i class="fa-solid fa-power-off"></i>
+            </button>
         </header>
 
-        <!-- MAIN DASHBOARD CONTENT -->
-        <main class="flex-1 p-4 sm:p-8 max-w-5xl mx-auto w-full space-y-6">
-
-            <!-- FBO IDENTITY BANNER -->
-            <div class="glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800/90 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-5 relative overflow-hidden">
-                <div class="flex items-center space-x-4 z-10">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-slate-800 to-slate-700 border border-slate-600/40 flex items-center justify-center text-xl sm:text-2xl font-black text-blue-400 shadow-inner flex-shrink-0" id="avatarInitial">
-                        F
+        <!-- ================= PAGE 1: TODAY'S LIVE LOGIN VIEW ================= -->
+        <main id="view-loginview" class="flex-1 p-4 sm:p-6 max-w-2xl mx-auto w-full space-y-4">
+            
+            <!-- Live Login Master Header -->
+            <div class="bg-gradient-to-r from-blue-900/40 to-slate-900 border border-blue-500/20 p-5 rounded-3xl shadow-xl flex items-center justify-between">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">LIVE TELEMETRY</span>
                     </div>
-                    <div>
-                        <div class="flex flex-wrap items-center gap-2">
-                            <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight" id="profileName">Loading Profile...</h2>
-                            <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/30">
-                                Forever Business Owner
-                            </span>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-1 flex items-center gap-1.5" id="profileEmailContainer">
-                            <i class="fa-regular fa-envelope text-slate-500"></i>
-                            <span id="profileEmail">user@domain.com</span>
-                        </p>
-                    </div>
+                    <h2 class="text-lg font-black text-white mt-1">TODAY'S SHIFT STATUS</h2>
+                    <p class="text-xs text-slate-400">Shift Date: <span id="liveShiftDate" class="text-slate-200 font-semibold">Today</span></p>
                 </div>
-
-                <div class="flex items-center space-x-3 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800/80 text-xs z-10 self-start sm:self-auto">
-                    <div class="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-sm">
-                        <i class="fa-solid fa-certificate"></i>
-                    </div>
-                    <div>
-                        <span class="text-slate-500 block text-[10px] font-bold uppercase tracking-wider">Account Standing</span>
-                        <span class="text-emerald-400 font-bold" id="badgeGlobalStatus">Compliant / Active</span>
-                    </div>
+                <div id="liveStatusBadge" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
+                    Present
                 </div>
             </div>
 
-            <!-- ======================================================== -->
-            <!--       SYSTEM 1: ATTENDANCE STRIKE SYSTEM (DISCIPLINE)    -->
-            <!-- ======================================================== -->
-            <div class="glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800/90 shadow-xl space-y-6">
-                <!-- Header -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800/80 gap-2">
+            <!-- Executive User Telemetry Card -->
+            <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-base">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center font-bold text-sm" id="liveAvatar">
+                            F
                         </div>
                         <div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="font-bold text-base text-white">Attendance Strike System</h3>
-                                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Discipline Only</span>
-                            </div>
-                            <p class="text-xs text-slate-400 mt-0.5">Measures login consistency, punctuality, and shift discipline. (Not linked to sales or conversions)</p>
+                            <h3 class="font-bold text-sm text-white" id="liveCardName">Executive Member</h3>
+                            <span class="text-[10px] text-slate-400 uppercase font-semibold">Active Session Record</span>
                         </div>
                     </div>
-                    <span class="text-[11px] font-medium text-slate-400 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800 self-start sm:self-auto">
-                        Rolling 2 Months Window
-                    </span>
-                </div>
-
-                <!-- Main Metrics Display -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Strikes Metric -->
-                    <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800/80">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Active Strikes</span>
-                        <div class="flex items-baseline space-x-1.5 mt-2">
-                            <span class="text-3xl font-extrabold text-amber-400" id="strikeNumber">0</span>
-                            <span class="text-xs text-slate-500 font-medium">/ 4 max</span>
-                        </div>
-                        <p class="text-[11px] text-slate-500 mt-1">4 Strikes = Termination</p>
-                    </div>
-
-                    <!-- Current Escalation Status -->
-                    <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800/80">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Current Escalation</span>
-                        <p class="text-sm font-bold text-white mt-2 truncate" id="strikeEscalation">Good Standing</p>
-                        <p class="text-[11px] text-slate-500 mt-1" id="strikeEscalationSub">No disciplinary actions</p>
-                    </div>
-
-                    <!-- Consistent Weeks Recovery -->
-                    <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800/80">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Recovery Weeks</span>
-                        <div class="flex items-baseline space-x-1 mt-2">
-                            <span class="text-2xl font-bold text-emerald-400" id="consistentWeeks">0</span>
-                            <span class="text-xs text-slate-500 font-medium">/ 3 weeks</span>
-                        </div>
-                        <p class="text-[11px] text-slate-500 mt-1">3 weeks removes 1 Strike</p>
-                    </div>
-
-                    <!-- Under Watch Occurrences -->
-                    <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800/80">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Under Watch Triggers</span>
-                        <p class="text-2xl font-bold text-slate-200 mt-2" id="underWatchCount">0</p>
-                        <p class="text-[11px] text-slate-500 mt-1">2 Under Watch = 1 Strike</p>
+                    <div class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 font-bold text-xs">
+                        🔥 <span id="valStreakCard">0</span> Days
                     </div>
                 </div>
 
-                <!-- Visual 4-Level Progress Bar -->
-                <div>
-                    <div class="flex justify-between text-xs text-slate-400 mb-2 font-medium">
-                        <span>Discipline Escalation Level</span>
-                        <span id="strikeMeterLabel">Level 0: Safe</span>
+                <!-- Big Net Production Hero Box -->
+                <div class="hero-net-metric rounded-2xl p-5 text-center shadow-lg">
+                    <span class="text-[10px] font-black uppercase text-emerald-300 tracking-wider">NET PRODUCTION TIME</span>
+                    <p class="text-4xl font-black text-white font-mono mt-1" id="liveNetLogin">00:00:00</p>
+                </div>
+
+                <!-- Break and Gross Login Row -->
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 block mb-1">Total Break</span>
+                        <span class="font-mono text-base font-bold text-slate-200" id="liveTotalBreak">00:00:00</span>
                     </div>
-                    <div class="grid grid-cols-4 gap-2">
-                        <div id="barStr1" class="h-2.5 rounded-full bg-slate-800 transition-all duration-300"></div>
-                        <div id="barStr2" class="h-2.5 rounded-full bg-slate-800 transition-all duration-300"></div>
-                        <div id="barStr3" class="h-2.5 rounded-full bg-slate-800 transition-all duration-300"></div>
-                        <div id="barStr4" class="h-2.5 rounded-full bg-slate-800 transition-all duration-300"></div>
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 block mb-1">Total Gross Login</span>
+                        <span class="font-mono text-base font-bold text-slate-200" id="liveTotalLogin">00:00:00</span>
                     </div>
-                    <div class="flex justify-between text-[10px] text-slate-500 mt-2 uppercase font-semibold">
-                        <span>1: Warning</span>
-                        <span>2: Meeting</span>
-                        <span>3: Final Warn</span>
-                        <span>4: Termination</span>
+                </div>
+
+                <!-- Remarks -->
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs flex justify-between items-center">
+                    <span class="text-slate-400">Shift Remarks:</span>
+                    <span class="font-semibold text-slate-200" id="liveRemarks">Active Shift Completed</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- ================= PAGE 2: ACCOUNTABILITY PROFILE (STRIKES & FLAGS) ================= -->
+        <main id="view-profile" class="hidden flex-1 p-4 sm:p-6 max-w-5xl mx-auto w-full space-y-6">
+            
+            <!-- Streak & Standing Banner -->
+            <div class="glass-card p-5 rounded-3xl border border-orange-500/20 bg-gradient-to-r from-orange-950/20 via-slate-900 to-slate-900 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-2xl">🔥</div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl font-black text-orange-400 font-mono" id="valStreakMain">0</span>
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-orange-300">Days Continuous Discipline</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Sundays excluded. Keep your momentum high!</p>
                     </div>
+                </div>
+                <div id="dynamicThemeTag" class="px-3 py-1 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                    Compliant Standing
                 </div>
             </div>
 
-            <!-- ======================================================== -->
-            <!--       SYSTEM 2: PERFORMANCE FLAG SYSTEM (QUALITY)        -->
-            <!-- ======================================================== -->
-            <div class="glass-panel p-6 sm:p-7 rounded-3xl border border-slate-800/90 shadow-xl space-y-6">
-                <!-- Header -->
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800/80 gap-2">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center text-base">
-                            <i class="fa-solid fa-flag"></i>
+            <!-- Two Separate Engines -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- 1. ATTENDANCE STRIKE ENGINE -->
+                <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <div class="flex items-center space-x-2.5">
+                            <i class="fa-solid fa-user-clock text-amber-400"></i>
+                            <h3 class="font-bold text-sm text-white">Attendance Strike Engine</h3>
                         </div>
+                        <span class="text-[10px] text-slate-400">Login Discipline Only</span>
+                    </div>
+
+                    <div class="flex items-baseline justify-between">
                         <div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="font-bold text-base text-white">Performance Flag System</h3>
-                                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Quality & Results</span>
+                            <span class="text-[11px] font-semibold uppercase text-slate-400">Active Strikes</span>
+                            <div class="flex items-baseline space-x-1.5 mt-1">
+                                <span class="text-4xl font-black text-amber-400 font-mono" id="valStrikes">0</span>
+                                <span class="text-xs text-slate-500">/ 4 max</span>
                             </div>
-                            <p class="text-xs text-slate-400 mt-0.5">Measures weekly conversion quality across funnel stages (Details &rarr; Assessment &rarr; Billing).</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[11px] font-semibold uppercase text-slate-400">Status</span>
+                            <p class="text-sm font-bold text-white mt-1" id="valStrikeStatus">Good Standing</p>
                         </div>
                     </div>
-                    <span class="text-[11px] font-medium text-slate-400 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800 self-start sm:self-auto">
-                        Weekly Funnel Evaluation
-                    </span>
-                </div>
 
-                <!-- Main Metrics Display -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Flags Metric -->
-                    <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800/80">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Cumulative Flags</span>
-                        <div class="flex items-baseline space-x-1.5 mt-2">
-                            <span class="text-3xl font-extrabold text-rose-500" id="flagNumber">0</span>
-                            <span class="text-xs text-slate-500 font-medium">/ 4 max</span>
+                    <!-- 4-Level Strike Progress Bar -->
+                    <div class="grid grid-cols-4 gap-1.5">
+                        <div id="sBar1" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
+                        <div id="sBar2" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
+                        <div id="sBar3" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
+                        <div id="sBar4" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
+                    </div>
+
+                    <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 text-xs space-y-2">
+                        <div class="flex justify-between text-slate-400">
+                            <span>Consistent Weeks (Recovery):</span>
+                            <span class="text-white font-bold"><span id="valConsistent">0</span> / 3</span>
                         </div>
-                        <p class="text-[11px] text-slate-500 mt-1">4 Flags = Lead Allocation Review</p>
-                    </div>
-
-                    <!-- Performance Status -->
-                    <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800/80">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Governance Status</span>
-                        <p class="text-sm font-bold text-white mt-2 truncate" id="flagGovernanceStatus">Active / Normal</p>
-                        <p class="text-[11px] text-slate-500 mt-1" id="flagGovernanceSub">Standard lead distribution</p>
-                    </div>
-
-                    <!-- Current Funnel Rating Band -->
-                    <div class="bg-slate-950/70 p-4 rounded-2xl border border-slate-800/80 sm:col-span-2 lg:col-span-1">
-                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Funnel Performance Band</span>
-                        <p class="text-sm font-bold text-blue-400 mt-2 truncate" id="currentPerfBand">Good Performance</p>
-                        <p class="text-[11px] text-slate-500 mt-1">3 &times; Good Performance removes 1 Flag</p>
+                        <div class="flex justify-between text-slate-400">
+                            <span>Under Watch Count:</span>
+                            <span class="text-amber-400 font-bold" id="valUnderWatch">0</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Visual 4-Level Progress Bar -->
-                <div>
-                    <div class="flex justify-between text-xs text-slate-400 mb-2 font-medium">
-                        <span>Quality Escalation Level</span>
-                        <span id="flagMeterLabel">Level 0: Normal</span>
+                <!-- 2. PERFORMANCE FLAG ENGINE -->
+                <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <div class="flex items-center space-x-2.5">
+                            <i class="fa-solid fa-chart-line text-blue-400"></i>
+                            <h3 class="font-bold text-sm text-white">Performance Flag Engine</h3>
+                        </div>
+                        <span class="text-[10px] text-slate-400">Work Quality & Conversions</span>
                     </div>
-                    <div class="grid grid-cols-4 gap-2">
-                        <div id="barFlg1" class="h-2.5 rounded-full bg-slate-800 transition-all duration-300"></div>
-                        <div id="barFlg2" class="h-2.5 rounded-full bg-slate-800 transition-all duration-300"></div>
-                        <div id="barFlg3" class="h-2.5 rounded-full bg-slate-800 transition-all duration-300"></div>
-                        <div id="barFlg4" class="h-2.5 rounded-full bg-slate-800 transition-all duration-300"></div>
+
+                    <div class="flex items-baseline justify-between">
+                        <div>
+                            <span class="text-[11px] font-semibold uppercase text-slate-400">Cumulative Flags</span>
+                            <div class="flex items-baseline space-x-1.5 mt-1">
+                                <span class="text-4xl font-black text-rose-500 font-mono" id="valFlags">0</span>
+                                <span class="text-xs text-slate-500">/ 4 max</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[11px] font-semibold uppercase text-slate-400">Governance</span>
+                            <p class="text-sm font-bold text-white mt-1" id="valFlagStatus">Active / Normal</p>
+                        </div>
                     </div>
-                    <div class="flex justify-between text-[10px] text-slate-500 mt-2 uppercase font-semibold">
-                        <span>1: Warning</span>
-                        <span>2: Mgr Review</span>
-                        <span>3: Final Warn</span>
-                        <span>4: Lead Review</span>
+
+                    <!-- 4-Level Flag Progress Bar -->
+                    <div class="grid grid-cols-4 gap-1.5">
+                        <div id="fBar1" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
+                        <div id="fBar2" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
+                        <div id="fBar3" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
+                        <div id="fBar4" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
+                    </div>
+
+                    <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 text-xs space-y-2">
+                        <div class="flex justify-between text-slate-400">
+                            <span>Weekly Score Band:</span>
+                            <span class="text-blue-400 font-bold" id="valPerfRating">Good Performance</span>
+                        </div>
+                        <div class="flex justify-between text-slate-400">
+                            <span>Recovery Rule:</span>
+                            <span class="text-slate-300">3 &times; Good = 1 Flag Removed</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
+        </main>
 
-            <!-- SYSTEM PRINCIPLES CARD -->
-            <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800/70 text-xs text-slate-400 space-y-2">
-                <div class="flex items-center gap-2 text-slate-300 font-semibold">
-                    <i class="fa-solid fa-scale-balanced text-blue-400"></i>
-                    <span>TARA Talent Solutions Accountability Protocol</span>
-                </div>
-                <p>
-                    • <strong>STRIKE:</strong> Evaluates only attendance, login punctuality, and shift commitment. Poor conversion does not trigger strikes.<br>
-                    • <strong>FLAG:</strong> Evaluates only conversion efficiency, candidate progression, and sales quality. Poor attendance does not trigger flags.
-                </p>
-            </div>
+        <!-- ================= PAGE 3: CRM VIEW ================= -->
+        <main id="view-crm" class="hidden flex-1 relative w-full h-[calc(100vh-60px)]">
+            <iframe src="https://taralearninghubflp.github.io/tara-live-portal/?v=2" class="w-full h-full border-0"></iframe>
         </main>
     </div>
 
+    <!-- ================= CLIENT LOGIC ================= -->
     <script>
-        // Dedicated Google Apps Script Web App Deployment URL
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlIyDugTAU-codhmJZ7OH_Q-5RYW6blDidh8uBWw7Nkka6-KcI_5Dr6Qx-cJIkefe2/exec";
 
-        // Check active session on load
-        window.onload = function() {
-            const cachedSession = localStorage.getItem("tara_portal_session");
-            if (cachedSession) {
-                try {
-                    const data = JSON.parse(cachedSession);
-                    displayPortalDashboard(data);
-                } catch(e) {
-                    localStorage.removeItem("tara_portal_session");
-                }
-            }
-        };
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById("loginEmail").value.trim();
+            const pass = document.getElementById("loginPass").value.trim();
+            const btn = document.getElementById("loginBtn");
+            const err = document.getElementById("loginError");
 
-        // Form Submission Authentication
-        function handleLoginSubmit(event) {
-            event.preventDefault();
-            const email = document.getElementById("inputEmail").value.trim();
-            const pass = document.getElementById("inputPassword").value.trim();
-            
-            const btn = document.getElementById("btnAuth");
-            const btnLabel = document.getElementById("authBtnLabel");
-            const spinner = document.getElementById("authSpinner");
-            const errBox = document.getElementById("loginError");
-            const errMsg = document.getElementById("errorMessage");
-
-            if (!email || !pass) return;
-
-            // UI feedback
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...';
             btn.disabled = true;
-            btnLabel.innerText = "Authenticating...";
-            spinner.classList.remove("hidden");
-            errBox.classList.add("hidden");
+            err.classList.add("hidden");
 
-            const apiUrl = `${SCRIPT_URL}?action=login&email=${encodeURIComponent(email)}&password=${encodeURIComponent(pass)}`;
-
-            fetch(apiUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("HTTP error " + response.status);
-                    }
-                    return response.json();
-                })
+            fetch(`${SCRIPT_URL}?action=login&email=${encodeURIComponent(email)}&password=${encodeURIComponent(pass)}`)
+                .then(res => res.json())
                 .then(data => {
-                    btn.disabled = false;
-                    btnLabel.innerText = "Verify & Enter Dashboard";
-                    spinner.classList.add("hidden");
-
                     if (data.status === "success") {
-                        // Persist clean session
-                        localStorage.setItem("tara_portal_session", JSON.stringify(data));
-                        localStorage.setItem("tara_portal_email", email);
-                        displayPortalDashboard(data);
+                        localStorage.setItem("tara_unified_session", JSON.stringify(data));
+                        renderPortal(data);
                     } else {
-                        errMsg.innerText = data.message || "Invalid credentials provided.";
-                        errBox.classList.remove("hidden");
+                        err.innerText = data.message || "Invalid credentials.";
+                        err.classList.remove("hidden");
+                        btn.innerHTML = 'Sign In to Workspace';
+                        btn.disabled = false;
                     }
                 })
-                .catch(err => {
+                .catch(() => {
+                    err.innerText = "Connection timeout. Please check your internet.";
+                    err.classList.remove("hidden");
+                    btn.innerHTML = 'Sign In to Workspace';
                     btn.disabled = false;
-                    btnLabel.innerText = "Verify & Enter Dashboard";
-                    spinner.classList.add("hidden");
-                    errMsg.innerText = "Connection timeout. Please verify internet connectivity.";
-                    errBox.classList.remove("hidden");
                 });
         }
 
-        // Render Telemetry Data into UI Elements
-        function displayPortalDashboard(data) {
+        function renderPortal(data) {
             document.getElementById("loginScreen").classList.add("hidden");
             document.getElementById("appContainer").classList.remove("hidden");
 
-            const fboName = data.fboName || "FBO Member";
-            const userEmail = data.email || localStorage.getItem("tara_portal_email") || "Registered Email";
+            const name = data.fboName || "FBO Member";
+            document.getElementById("navFboName").innerText = name;
+            document.getElementById("liveCardName").innerText = name;
+            document.getElementById("liveAvatar").innerText = name.charAt(0).toUpperCase();
 
-            document.getElementById("navFboDisplayName").innerText = fboName;
-            document.getElementById("profileName").innerText = fboName;
-            document.getElementById("profileEmail").innerText = userEmail;
-            document.getElementById("avatarInitial").innerText = fboName.charAt(0).toUpperCase();
+            // Streak Telemetry
+            const streak = data.streakCount || 0;
+            document.getElementById("valStreakTop").innerText = streak;
+            document.getElementById("valStreakMain").innerText = streak;
+            document.getElementById("valStreakCard").innerText = streak;
 
-            // 1. Attendance Strike Engine Rendering
-            const attendance = data.attendance || {};
-            const strikes = parseInt(attendance.strikes) || 0;
-            const strikeStatus = attendance.status || "Good Standing";
-            const underWatch = attendance.underWatchCount !== undefined ? attendance.underWatchCount : 0;
-            const consistent = attendance.consistentWeeks !== undefined ? attendance.consistentWeeks : 0;
+            // Strikes & Flags
+            const strikes = parseInt(data.attendance.strikes) || 0;
+            const flags = parseInt(data.performance.flags) || 0;
 
-            document.getElementById("strikeNumber").innerText = strikes;
-            document.getElementById("strikeEscalation").innerText = strikeStatus;
-            document.getElementById("underWatchCount").innerText = underWatch;
-            document.getElementById("consistentWeeks").innerText = consistent;
+            document.getElementById("valStrikes").innerText = strikes;
+            document.getElementById("valStrikeStatus").innerText = data.attendance.status || "Good Standing";
+            document.getElementById("valConsistent").innerText = data.attendance.consistentWeeks || 0;
+            document.getElementById("valUnderWatch").innerText = data.attendance.underWatchCount || 0;
 
-            // Render Strike Progress Bars
+            document.getElementById("valFlags").innerText = flags;
+            document.getElementById("valFlagStatus").innerText = data.performance.status || "Active / Normal";
+            document.getElementById("valPerfRating").innerText = data.performance.currentRating || "Good Performance";
+
             for (let i = 1; i <= 4; i++) {
-                const bar = document.getElementById("barStr" + i);
-                if (i <= strikes) {
-                    bar.className = (strikes >= 4) ? "h-2.5 rounded-full bg-rose-500" :
-                                    (strikes >= 3) ? "h-2.5 rounded-full bg-orange-500" :
-                                    "h-2.5 rounded-full bg-amber-400";
-                } else {
-                    bar.className = "h-2.5 rounded-full bg-slate-800";
-                }
+                document.getElementById("sBar" + i).className = i <= strikes ? "h-2 rounded-full bg-amber-400" : "h-2 rounded-full bg-slate-800";
+                document.getElementById("fBar" + i).className = i <= flags ? "h-2 rounded-full bg-rose-500" : "h-2 rounded-full bg-slate-800";
             }
 
-            const strikeMeter = document.getElementById("strikeMeterLabel");
-            if (strikes === 0) strikeMeter.innerText = "Level 0: Safe";
-            else if (strikes === 1) strikeMeter.innerText = "Level 1: Warning";
-            else if (strikes === 2) strikeMeter.innerText = "Level 2: No Recognition + Manager Meeting";
-            else if (strikes === 3) strikeMeter.innerText = "Level 3: Final Warning + Access Action";
-            else strikeMeter.innerText = "Level 4: Termination Review";
-
-            // 2. Performance Flag Engine Rendering
-            const performance = data.performance || {};
-            const flags = parseInt(performance.flags) || 0;
-            const flagStatus = performance.status || "Active / Normal";
-            const currentRating = performance.currentRating || "Good Performance";
-
-            document.getElementById("flagNumber").innerText = flags;
-            document.getElementById("flagGovernanceStatus").innerText = flagStatus;
-            document.getElementById("currentPerfBand").innerText = currentRating;
-
-            // Render Flag Progress Bars
-            for (let j = 1; j <= 4; j++) {
-                const barF = document.getElementById("barFlg" + j);
-                if (j <= flags) {
-                    barF.className = (flags >= 4) ? "h-2.5 rounded-full bg-rose-600" :
-                                     (flags >= 2) ? "h-2.5 rounded-full bg-rose-500" :
-                                     "h-2.5 rounded-full bg-amber-500";
-                } else {
-                    barF.className = "h-2.5 rounded-full bg-slate-800";
-                }
-            }
-
-            const flagMeter = document.getElementById("flagMeterLabel");
-            if (flags === 0) flagMeter.innerText = "Level 0: Normal Distribution";
-            else if (flags === 1) flagMeter.innerText = "Level 1: Performance Warning";
-            else if (flags === 2) flagMeter.innerText = "Level 2: Manager Performance Review";
-            else if (flags === 3) flagMeter.innerText = "Level 3: Final Performance Warning";
-            else flagMeter.innerText = "Level 4: Lead Allocation Review";
-
-            // Global Standing Badge
-            const badge = document.getElementById("badgeGlobalStatus");
+            const themeTag = document.getElementById("dynamicThemeTag");
             if (strikes >= 3 || flags >= 3) {
-                badge.innerText = "Under Governance Review";
-                badge.className = "text-rose-400 font-bold";
-            } else if (strikes >= 1 || flags >= 1) {
-                badge.innerText = "Warning State";
-                badge.className = "text-amber-400 font-bold";
+                themeTag.className = "px-3 py-1 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30";
+                themeTag.innerText = "Critical Escalation";
+            } else if (strikes > 0 || flags > 0) {
+                themeTag.className = "px-3 py-1 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30";
+                themeTag.innerText = "Watch Review Active";
             } else {
-                badge.innerText = "Compliant / Active";
-                badge.className = "text-emerald-400 font-bold";
+                themeTag.className = "px-3 py-1 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30";
+                themeTag.innerText = "Good Discipline";
+            }
+
+            // Live Login View Data
+            if (data.latestTelemetry) {
+                document.getElementById("liveShiftDate").innerText = data.latestTelemetry.date;
+                document.getElementById("liveNetLogin").innerText = data.latestTelemetry.netLogin;
+                document.getElementById("liveTotalBreak").innerText = data.latestTelemetry.totalBreak;
+                document.getElementById("liveTotalLogin").innerText = data.latestTelemetry.totalLogin;
+                document.getElementById("liveRemarks").innerText = data.latestTelemetry.remarks;
+                
+                const isPres = data.latestTelemetry.status === "Present";
+                document.getElementById("liveStatusBadge").className = isPres ? 
+                    "px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400" :
+                    "px-3.5 py-1.5 rounded-full text-xs font-bold bg-rose-500/15 border border-rose-500/30 text-rose-400";
+                document.getElementById("liveStatusBadge").innerText = data.latestTelemetry.status;
             }
         }
 
-        // Refresh Data from Server
-        function refreshDashboardData() {
-            const cached = localStorage.getItem("tara_portal_session");
-            if (!cached) return;
+        function switchView(viewName) {
+            document.getElementById("view-loginview").classList.add("hidden");
+            document.getElementById("view-profile").classList.add("hidden");
+            document.getElementById("view-crm").classList.add("hidden");
+
+            document.getElementById("tab-loginview").className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white";
+            document.getElementById("tab-profile").className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white";
+            document.getElementById("tab-crm").className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white";
+
+            document.getElementById("view-" + viewName).classList.remove("hidden");
+            document.getElementById("tab-" + viewName).className = "px-3 py-1.5 rounded-lg transition bg-blue-600 text-white shadow";
+        }
+
+        function handleLogout() {
+            localStorage.removeItem("tara_unified_session");
             location.reload();
         }
 
-        // Terminate Session
-        function handleLogout() {
-            localStorage.removeItem("tara_portal_session");
-            localStorage.removeItem("tara_portal_email");
-            location.reload();
-        }
+        window.onload = function() {
+            const session = localStorage.getItem("tara_unified_session");
+            if (session) {
+                try {
+                    renderPortal(JSON.parse(session));
+                } catch(e) {
+                    localStorage.removeItem("tara_unified_session");
+                }
+            }
+        };
     </script>
 </body>
 </html>
