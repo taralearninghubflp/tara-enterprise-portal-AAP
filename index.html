@@ -17,15 +17,11 @@
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .hero-net-metric {
-            background: linear-gradient(180deg, rgba(6, 78, 59, 0.5) 0%, rgba(2, 44, 34, 0.75) 100%);
-            border: 1.5px solid rgba(16, 185, 129, 0.45);
-        }
     </style>
 </head>
 <body class="bg-[#070a12] text-slate-100 min-h-screen flex flex-col antialiased">
 
-    <!-- ================= 1. SECURE LOGIN SCREEN ================= -->
+    <!-- ================= LOGIN SCREEN ================= -->
     <div id="loginScreen" class="fixed inset-0 z-50 flex items-center justify-center bg-[#070a12]/95 backdrop-blur-xl p-4">
         <div class="glass-card p-8 rounded-3xl shadow-2xl w-full max-w-md border border-slate-800 relative overflow-hidden">
             <div class="text-center mb-8">
@@ -51,10 +47,10 @@
         </div>
     </div>
 
-    <!-- ================= 2. UNIFIED WORKSPACE ================= -->
+    <!-- ================= MAIN UNIFIED HUB ================= -->
     <div id="appContainer" class="hidden flex-1 flex flex-col min-h-screen">
         
-        <!-- TOP STICKY NAVBAR & VIEW SWITCHER MENU -->
+        <!-- TOP STICKY APP BAR & SWITCHER -->
         <header class="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 py-3 sticky top-0 z-40 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center font-black text-sm">T</div>
@@ -69,83 +65,22 @@
                 </div>
             </div>
 
-            <!-- Page Switch Menu (Live Login, Profile, CRM) -->
+            <!-- Page Switch Tabs -->
             <nav class="flex items-center space-x-1 bg-slate-900 border border-slate-800 p-1 rounded-xl text-xs font-semibold">
-                <button onclick="switchView('loginview')" id="tab-loginview" class="px-3 py-1.5 rounded-lg transition bg-blue-600 text-white shadow">Live Login</button>
-                <button onclick="switchView('profile')" id="tab-profile" class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white">Profile (Strikes & Flags)</button>
+                <button onclick="switchView('profile')" id="tab-profile" class="px-3 py-1.5 rounded-lg transition bg-blue-600 text-white shadow">Profile</button>
+                <button onclick="switchView('loginview')" id="tab-loginview" class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white">Live Login</button>
                 <button onclick="switchView('crm')" id="tab-crm" class="px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white">CRM</button>
             </nav>
 
-            <button onclick="handleLogout()" title="Logout" class="text-xs font-semibold px-2.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-lg">
+            <button onclick="handleLogout()" class="text-xs font-semibold px-2.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-lg">
                 <i class="fa-solid fa-power-off"></i>
             </button>
         </header>
 
-        <!-- ================= PAGE 1: TODAY'S LIVE LOGIN VIEW ================= -->
-        <main id="view-loginview" class="flex-1 p-4 sm:p-6 max-w-2xl mx-auto w-full space-y-4">
+        <!-- VIEW 1: FBO ACCOUNTABILITY PROFILE (Strikes & Flags) -->
+        <main id="view-profile" class="flex-1 p-4 sm:p-6 max-w-5xl mx-auto w-full space-y-6">
             
-            <!-- Live Login Master Header -->
-            <div class="bg-gradient-to-r from-blue-900/40 to-slate-900 border border-blue-500/20 p-5 rounded-3xl shadow-xl flex items-center justify-between">
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-400">LIVE TELEMETRY</span>
-                    </div>
-                    <h2 class="text-lg font-black text-white mt-1">TODAY'S SHIFT STATUS</h2>
-                    <p class="text-xs text-slate-400">Shift Date: <span id="liveShiftDate" class="text-slate-200 font-semibold">Today</span></p>
-                </div>
-                <div id="liveStatusBadge" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
-                    Present
-                </div>
-            </div>
-
-            <!-- Executive User Telemetry Card -->
-            <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center font-bold text-sm" id="liveAvatar">
-                            F
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-sm text-white" id="liveCardName">Executive Member</h3>
-                            <span class="text-[10px] text-slate-400 uppercase font-semibold">Active Session Record</span>
-                        </div>
-                    </div>
-                    <div class="inline-flex items-center gap-1 px-3 py-1 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 font-bold text-xs">
-                        🔥 <span id="valStreakCard">0</span> Days
-                    </div>
-                </div>
-
-                <!-- Big Net Production Hero Box -->
-                <div class="hero-net-metric rounded-2xl p-5 text-center shadow-lg">
-                    <span class="text-[10px] font-black uppercase text-emerald-300 tracking-wider">NET PRODUCTION TIME</span>
-                    <p class="text-4xl font-black text-white font-mono mt-1" id="liveNetLogin">00:00:00</p>
-                </div>
-
-                <!-- Break and Gross Login Row -->
-                <div class="grid grid-cols-2 gap-3 text-xs">
-                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
-                        <span class="text-slate-400 block mb-1">Total Break</span>
-                        <span class="font-mono text-base font-bold text-slate-200" id="liveTotalBreak">00:00:00</span>
-                    </div>
-                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
-                        <span class="text-slate-400 block mb-1">Total Gross Login</span>
-                        <span class="font-mono text-base font-bold text-slate-200" id="liveTotalLogin">00:00:00</span>
-                    </div>
-                </div>
-
-                <!-- Remarks -->
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs flex justify-between items-center">
-                    <span class="text-slate-400">Shift Remarks:</span>
-                    <span class="font-semibold text-slate-200" id="liveRemarks">Active Shift Completed</span>
-                </div>
-            </div>
-        </main>
-
-        <!-- ================= PAGE 2: ACCOUNTABILITY PROFILE (STRIKES & FLAGS) ================= -->
-        <main id="view-profile" class="hidden flex-1 p-4 sm:p-6 max-w-5xl mx-auto w-full space-y-6">
-            
-            <!-- Streak & Standing Banner -->
+            <!-- STREAK BANNER -->
             <div class="glass-card p-5 rounded-3xl border border-orange-500/20 bg-gradient-to-r from-orange-950/20 via-slate-900 to-slate-900 flex items-center justify-between">
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-2xl">🔥</div>
@@ -162,10 +97,10 @@
                 </div>
             </div>
 
-            <!-- Two Separate Engines -->
+            <!-- TWO INDEPENDENT SYSTEMS -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <!-- 1. ATTENDANCE STRIKE ENGINE -->
+                <!-- 1. ATTENDANCE STRIKE SYSTEM -->
                 <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                         <div class="flex items-center space-x-2.5">
@@ -189,7 +124,7 @@
                         </div>
                     </div>
 
-                    <!-- 4-Level Strike Progress Bar -->
+                    <!-- 4-Level Strike Bar -->
                     <div class="grid grid-cols-4 gap-1.5">
                         <div id="sBar1" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
                         <div id="sBar2" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
@@ -209,7 +144,7 @@
                     </div>
                 </div>
 
-                <!-- 2. PERFORMANCE FLAG ENGINE -->
+                <!-- 2. PERFORMANCE FLAG SYSTEM -->
                 <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                         <div class="flex items-center space-x-2.5">
@@ -233,7 +168,7 @@
                         </div>
                     </div>
 
-                    <!-- 4-Level Flag Progress Bar -->
+                    <!-- 4-Level Flag Bar -->
                     <div class="grid grid-cols-4 gap-1.5">
                         <div id="fBar1" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
                         <div id="fBar2" class="h-2 rounded-full bg-slate-800 transition-colors"></div>
@@ -256,13 +191,49 @@
             </div>
         </main>
 
-        <!-- ================= PAGE 3: CRM VIEW ================= -->
+        <!-- VIEW 2: TODAY'S LIVE LOGIN VIEW (Personalized Telemetry) -->
+        <main id="view-loginview" class="hidden flex-1 p-4 sm:p-6 max-w-xl mx-auto w-full space-y-4">
+            <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-5">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div>
+                        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Shift Date</span>
+                        <h3 class="text-sm font-bold text-white" id="liveShiftDate">Today</h3>
+                    </div>
+                    <span id="liveStatusBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">Present</span>
+                </div>
+
+                <!-- Big Net Production Hero -->
+                <div class="bg-slate-950 border border-emerald-500/30 rounded-2xl p-4 text-center">
+                    <span class="text-[11px] font-bold uppercase text-emerald-400 tracking-wider">Net Production Time</span>
+                    <p class="text-3xl font-black text-white font-mono mt-1" id="liveNetLogin">00:00:00</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 block mb-1">Total Break</span>
+                        <span class="font-mono text-sm font-bold text-slate-200" id="liveTotalBreak">00:00:00</span>
+                    </div>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                        <span class="text-slate-400 block mb-1">Total Gross Login</span>
+                        <span class="font-mono text-sm font-bold text-slate-200" id="liveTotalLogin">00:00:00</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs flex justify-between">
+                    <span class="text-slate-400">Shift Remarks:</span>
+                    <span class="font-semibold text-slate-200" id="liveRemarks">Normal Shift</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- VIEW 3: CRM VIEW -->
         <main id="view-crm" class="hidden flex-1 relative w-full h-[calc(100vh-60px)]">
             <iframe src="https://taralearninghubflp.github.io/tara-live-portal/?v=2" class="w-full h-full border-0"></iframe>
         </main>
+
     </div>
 
-    <!-- ================= CLIENT LOGIC ================= -->
+    <!-- ================= CLIENT JAVASCRIPT ================= -->
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlIyDugTAU-codhmJZ7OH_Q-5RYW6blDidh8uBWw7Nkka6-KcI_5Dr6Qx-cJIkefe2/exec";
 
@@ -304,14 +275,11 @@
 
             const name = data.fboName || "FBO Member";
             document.getElementById("navFboName").innerText = name;
-            document.getElementById("liveCardName").innerText = name;
-            document.getElementById("liveAvatar").innerText = name.charAt(0).toUpperCase();
-
+            
             // Streak Telemetry
             const streak = data.streakCount || 0;
             document.getElementById("valStreakTop").innerText = streak;
             document.getElementById("valStreakMain").innerText = streak;
-            document.getElementById("valStreakCard").innerText = streak;
 
             // Strikes & Flags
             const strikes = parseInt(data.attendance.strikes) || 0;
@@ -326,11 +294,13 @@
             document.getElementById("valFlagStatus").innerText = data.performance.status || "Active / Normal";
             document.getElementById("valPerfRating").innerText = data.performance.currentRating || "Good Performance";
 
+            // Bars update
             for (let i = 1; i <= 4; i++) {
                 document.getElementById("sBar" + i).className = i <= strikes ? "h-2 rounded-full bg-amber-400" : "h-2 rounded-full bg-slate-800";
                 document.getElementById("fBar" + i).className = i <= flags ? "h-2 rounded-full bg-rose-500" : "h-2 rounded-full bg-slate-800";
             }
 
+            // Dynamic Theme Accent
             const themeTag = document.getElementById("dynamicThemeTag");
             if (strikes >= 3 || flags >= 3) {
                 themeTag.className = "px-3 py-1 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-400 border border-rose-500/30";
@@ -353,19 +323,19 @@
                 
                 const isPres = data.latestTelemetry.status === "Present";
                 document.getElementById("liveStatusBadge").className = isPres ? 
-                    "px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400" :
-                    "px-3.5 py-1.5 rounded-full text-xs font-bold bg-rose-500/15 border border-rose-500/30 text-rose-400";
+                    "px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400" :
+                    "px-3 py-1 rounded-full text-xs font-bold bg-rose-500/15 border border-rose-500/30 text-rose-400";
                 document.getElementById("liveStatusBadge").innerText = data.latestTelemetry.status;
             }
         }
 
         function switchView(viewName) {
-            document.getElementById("view-loginview").classList.add("hidden");
             document.getElementById("view-profile").classList.add("hidden");
+            document.getElementById("view-loginview").classList.add("hidden");
             document.getElementById("view-crm").classList.add("hidden");
 
-            document.getElementById("tab-loginview").className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white";
             document.getElementById("tab-profile").className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white";
+            document.getElementById("tab-loginview").className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white";
             document.getElementById("tab-crm").className = "px-3 py-1.5 rounded-lg transition text-slate-400 hover:text-white";
 
             document.getElementById("view-" + viewName).classList.remove("hidden");
