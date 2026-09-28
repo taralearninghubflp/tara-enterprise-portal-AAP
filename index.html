@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark"><head>
+<html lang="en" data-theme="dark">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>TARA FBO Enterprise Hub</title>
+  <title>TARA Enterprise Hub</title>
 
   <!-- Prevent Caching -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -13,8 +14,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -34,21 +35,14 @@
     :root {
       --bg: #070a12;
       --surface: #0f172a;
-      --surface-sub: #1e293b;
       --border: rgba(255, 255, 255, 0.08);
-      --hero-bg: linear-gradient(180deg, rgba(6, 78, 59, 0.55) 0%, rgba(2, 44, 34, 0.85) 100%);
+      --hero-bg: linear-gradient(180deg, rgba(6, 78, 59, 0.45) 0%, rgba(2, 44, 34, 0.75) 100%);
       --hero-border: rgba(16, 185, 129, 0.45);
-      --hero-label: #34d399;
-      --hero-value: #ecfdf5;
+      --header-bg: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
     }
 
-    * {
-      -webkit-tap-highlight-color: transparent;
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+    
     body {
       background-color: var(--bg);
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -58,119 +52,90 @@
       -webkit-user-select: none;
     }
 
-    .font-mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .master-header-gradient {
-      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: #22c55e;
-      border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.4);
+    .glass-surface {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
     .hero-net-container {
       background: var(--hero-bg);
       border: 1.5px solid var(--hero-border);
-      box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.25);
+      box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.15);
     }
 
-    .glass-surface {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border);
+    .master-header {
+      background: var(--header-bg);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
 
+    .pulse-dot {
+      width: 8px; height: 8px; background: #22c55e; border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.4);
+    }
+
+    /* Badges */
     .badge-excellent { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
     .badge-fullday { background: rgba(20, 184, 166, 0.15); color: #5eead4; border: 1px solid rgba(20, 184, 166, 0.3); }
     .badge-halfday { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
     .badge-progress { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); }
-    .badge-pending { background: rgba(249, 115, 22, 0.15); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.3); }
     .badge-absent { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
   </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:"Plus Jakarta Sans", sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:"JetBrains Mono", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-right-14{right:-3.5rem}.-top-14{top:-3.5rem}.left-3\.5{left:0.875rem}.top-0{top:0px}.top-3\.5{top:0.875rem}.bottom-0{bottom:0px}.bottom-16{bottom:4rem}.left-0{left:0px}.left-1\/2{left:50%}.right-0{right:0px}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.z-30{z-index:30}.mx-3{margin-left:0.75rem;margin-right:0.75rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1\.5{margin-bottom:0.375rem}.mb-3{margin-bottom:0.75rem}.mb-6{margin-bottom:1.5rem}.mt-0\.5{margin-top:0.125rem}.mb-1{margin-bottom:0.25rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-3\.5{margin-top:0.875rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-12{height:3rem}.h-2\.5{height:0.625rem}.h-36{height:9rem}.h-1\.5{height:0.375rem}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-2{height:0.5rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-12{width:3rem}.w-2\.5{width:0.625rem}.w-36{width:9rem}.w-full{width:100%}.w-10{width:2.5rem}.w-11{width:2.75rem}.max-w-sm{max-width:24rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-1{gap:0.25rem}.gap-2\.5{gap:0.625rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-x-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.375rem * var(--tw-space-x-reverse));margin-left:calc(0.375rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.875rem * var(--tw-space-x-reverse));margin-left:calc(0.875rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.rounded-lg{border-radius:0.5rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-emerald-500\/20{border-color:rgb(16 185 129 / 0.2)}.border-emerald-500\/30{border-color:rgb(16 185 129 / 0.3)}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.border-blue-500\/30{border-color:rgb(59 130 246 / 0.3)}.border-orange-500\/30{border-color:rgb(249 115 22 / 0.3)}.border-rose-500\/30{border-color:rgb(244 63 94 / 0.3)}.border-slate-800\/80{border-color:rgb(30 41 59 / 0.8)}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/15{border-color:rgb(255 255 255 / 0.15)}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-\[\#070a12\]\/95{background-color:rgb(7 10 18 / 0.95)}.bg-blue-600\/20{background-color:rgb(37 99 235 / 0.2)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-slate-900\/90{background-color:rgb(15 23 42 / 0.9)}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-black\/25{background-color:rgb(0 0 0 / 0.25)}.bg-black\/30{background-color:rgb(0 0 0 / 0.3)}.bg-blue-500\/10{background-color:rgb(59 130 246 / 0.1)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/10{background-color:rgb(16 185 129 / 0.1)}.bg-orange-500\/15{background-color:rgb(249 115 22 / 0.15)}.bg-rose-500\/20{background-color:rgb(244 63 94 / 0.2)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900\/80{background-color:rgb(15 23 42 / 0.8)}.bg-slate-950\/70{background-color:rgb(2 6 23 / 0.7)}.bg-white\/10{background-color:rgb(255 255 255 / 0.1)}.bg-amber-400{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.bg-rose-500{--tw-bg-opacity:1;background-color:rgb(244 63 94 / var(--tw-bg-opacity, 1))}.bg-rose-500\/10{background-color:rgb(244 63 94 / 0.1)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-blue-600{--tw-gradient-from:#2563eb var(--tw-gradient-from-position);--tw-gradient-to:rgb(37 99 235 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-500{--tw-gradient-from:#10b981 var(--tw-gradient-from-position);--tw-gradient-to:rgb(16 185 129 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-emerald-950\/95{--tw-gradient-from:rgb(2 44 34 / 0.95) var(--tw-gradient-from-position);--tw-gradient-to:rgb(2 44 34 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-orange-950\/30{--tw-gradient-from:rgb(67 20 7 / 0.3) var(--tw-gradient-from-position);--tw-gradient-to:rgb(67 20 7 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-slate-950\/95{--tw-gradient-to:rgb(2 6 23 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(2 6 23 / 0.95) var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-slate-900{--tw-gradient-to:rgb(15 23 42 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #0f172a var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-blue-950\/95{--tw-gradient-to:rgb(23 37 84 / 0.95) var(--tw-gradient-to-position)}.to-indigo-600{--tw-gradient-to:#4f46e5 var(--tw-gradient-to-position)}.to-teal-500{--tw-gradient-to:#14b8a6 var(--tw-gradient-to-position)}.to-emerald-400{--tw-gradient-to:#34d399 var(--tw-gradient-to-position)}.to-slate-900{--tw-gradient-to:#0f172a var(--tw-gradient-to-position)}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-0\.5{padding:0.125rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-5{padding:1.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.pl-9{padding-left:2.25rem}.pr-3{padding-right:0.75rem}.pb-24{padding-bottom:6rem}.pb-3{padding-bottom:0.75rem}.pt-1{padding-top:0.25rem}.text-center{text-align:center}.text-right{text-align:right}.font-mono{font-family:"JetBrains Mono", monospace}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-semibold{font-weight:600}.font-medium{font-weight:500}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-tight{letter-spacing:-0.025em}.tracking-widest{letter-spacing:0.1em}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-slate-100{--tw-text-opacity:1;color:rgb(241 245 249 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-950{--tw-text-opacity:1;color:rgb(2 6 23 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-blue-200{--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.text-blue-300{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-orange-200{--tw-text-opacity:1;color:rgb(254 215 170 / var(--tw-text-opacity, 1))}.text-orange-300{--tw-text-opacity:1;color:rgb(253 186 116 / var(--tw-text-opacity, 1))}.text-orange-400{--tw-text-opacity:1;color:rgb(251 146 60 / var(--tw-text-opacity, 1))}.text-rose-300{--tw-text-opacity:1;color:rgb(253 164 175 / var(--tw-text-opacity, 1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-blue-500\/25{--tw-shadow-color:rgb(59 130 246 / 0.25);--tw-shadow:var(--tw-shadow-colored)}.shadow-emerald-500\/20{--tw-shadow-color:rgb(16 185 129 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.shadow-blue-600\/30{--tw-shadow-color:rgb(37 99 235 / 0.3);--tw-shadow:var(--tw-shadow-colored)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.selection\:bg-blue-600 *::selection{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.selection\:bg-blue-600::selection{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:bg-rose-500\/30:hover{background-color:rgb(244 63 94 / 0.3)}.hover\:bg-white\/20:hover{background-color:rgb(255 255 255 / 0.2)}.hover\:from-emerald-400:hover{--tw-gradient-from:#34d399 var(--tw-gradient-from-position);--tw-gradient-to:rgb(52 211 153 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:from-blue-500:hover{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-teal-400:hover{--tw-gradient-to:#2dd4bf var(--tw-gradient-to-position)}.hover\:to-indigo-500:hover{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.hover\:text-slate-300:hover{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.focus\:border-blue-500:focus{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:inline{display:inline}.sm\:p-7{padding:1.75rem}}</style></head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+</head>
+<body class="min-h-screen flex flex-col items-center">
 
-  <!-- ================= TOP DOWNLOAD BAR ================= -->
-  <div class="sticky top-0 z-50 bg-gradient-to-r from-emerald-950/95 via-slate-950/95 to-blue-950/95 backdrop-blur-md border-b border-emerald-500/30 px-3 py-2 flex items-center justify-between text-xs shadow-lg">
-    <div class="flex items-center space-x-2">
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="font-extrabold text-white tracking-wide uppercase text-[11px] hidden sm:inline">Deployment File:</span>
-      <span class="font-mono text-emerald-300 font-bold bg-slate-900/90 px-2 py-0.5 rounded border border-emerald-500/20">index.html</span>
-    </div>
-    <div class="flex items-center gap-2">
-      <button onclick="triggerImmediateDownload()" class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 active:scale-95 text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-xl shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 transition-all">
-        <i class="fa-solid fa-file-arrow-down"></i>
-        <span>Download index.html</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ================= 1. SECURE AUTHENTICATION MODAL ================= -->
-  <div id="loginModal" class="fixed inset-0 z-40 flex items-center justify-center p-4 bg-[#070a12]/95 backdrop-blur-xl hidden">
-    <div class="glass-surface w-full max-w-sm p-6 sm:p-7 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
-      
+  <!-- ================= AUTHENTICATION MODAL ================= -->
+  <div id="loginView" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070a12]/95 backdrop-blur-xl">
+    <div class="glass-surface w-full max-w-sm p-7 rounded-3xl relative overflow-hidden">
       <div class="absolute -top-14 -right-14 w-36 h-36 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="text-center mb-6 relative z-10">
-        <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-xl shadow-lg shadow-blue-500/25 mb-3">
-          T
-        </div>
-        <h1 class="text-lg font-bold text-white tracking-wide">TARA WORKSPACE</h1>
-        <p class="text-[10px] text-blue-400 mt-0.5 uppercase tracking-wider font-semibold">FBO Mobile Enterprise Hub</p>
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-xl shadow-lg shadow-blue-500/25 mb-3">T</div>
+        <h1 class="text-xl font-bold tracking-tight text-white">TARA WORKSPACE</h1>
+        <p class="text-[11px] font-semibold text-blue-400 mt-0.5 uppercase tracking-wider">FBO Mobile Portal</p>
       </div>
 
-      <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4 relative z-10">
+      <form id="authForm" onsubmit="handleLogin(event)" class="space-y-4 relative z-10">
         <div>
-          <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Registered Email</label>
+          <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Registered Email</label>
           <div class="relative">
             <i class="fa-regular fa-envelope absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
-            <input type="email" id="fboEmail" required="" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-100 transition-colors" placeholder="your-email@gmail.com">
+            <input type="email" id="inputEmail" required class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-100 transition-colors" placeholder="your-email@gmail.com">
           </div>
         </div>
-
         <div>
-          <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Passcode</label>
+          <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Passcode</label>
           <div class="relative">
             <i class="fa-solid fa-lock absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
-            <input type="password" id="fboPass" required="" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-100 transition-colors" placeholder="••••••••">
+            <input type="password" id="inputPass" required class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-3 py-3 text-sm focus:outline-none focus:border-blue-500 text-slate-100 transition-colors" placeholder="••••••••">
           </div>
         </div>
-
-        <button type="submit" id="authSubmitBtn" class="w-full mt-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-95 transition-all font-bold text-sm py-3.5 rounded-xl shadow-lg shadow-blue-600/30 text-white flex items-center justify-center space-x-2">
-          <span id="btnAuthText">Sign In to Hub</span>
-          <i id="btnAuthSpinner" class="fa-solid fa-circle-notch fa-spin hidden text-xs"></i>
+        <button type="submit" id="btnSubmit" class="w-full mt-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-95 transition-all font-bold text-sm py-3.5 rounded-xl shadow-lg shadow-blue-600/30 text-white flex items-center justify-center space-x-2">
+          <span id="btnText">Authenticate & Enter</span>
+          <i id="btnSpinner" class="fa-solid fa-circle-notch fa-spin hidden text-xs"></i>
         </button>
-        <p id="authErrorMsg" class="text-xs text-rose-400 text-center hidden font-medium pt-1"></p>
+        <p id="errorMsg" class="text-xs text-rose-400 text-center hidden font-medium pt-1"></p>
       </form>
     </div>
   </div>
 
-  <!-- ================= 2. MAIN HUB INTERFACE ================= -->
-  <div id="mainApp" class="flex-1 flex flex-col pb-24">
-
-    <!-- Top Master Header -->
-    <header class="master-header-gradient rounded-2xl mx-3 mt-3 p-4 text-white">
-      <div class="flex items-center justify-between mb-3">
-        <div class="inline-flex items-center gap-2 bg-black/30 border border-white/15 px-2.5 py-1 rounded-full text-[11px] font-extrabold tracking-wider">
+  <!-- ================= MAIN DASHBOARD APP ================= -->
+  <div id="dashboardView" class="hidden w-full max-w-lg mx-auto flex flex-col min-h-screen pb-20">
+    
+    <!-- Header Card -->
+    <header class="master-header rounded-b-3xl p-5 sm:p-6 text-white sticky top-0 z-40">
+      <div class="flex items-center justify-between mb-5">
+        <div class="inline-flex items-center gap-2 bg-black/30 border border-white/15 px-3 py-1.5 rounded-full text-[10px] font-extrabold tracking-widest uppercase">
           <span class="pulse-dot"></span>
-          <span>LIVE TELEMETRY</span>
+          <span>Live Telemetry</span>
         </div>
-
         <div class="flex items-center gap-2">
-          <button onclick="refreshLiveTelemetry()" id="refreshBtn" title="Sync Telemetry" class="bg-white/10 hover:bg-white/20 active:scale-95 border border-white/20 px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
-            <i class="fa-solid fa-arrows-rotate" id="refreshIcon"></i>
+          <button onclick="syncData()" title="Sync Telemetry" class="bg-white/10 hover:bg-white/20 active:scale-95 border border-white/20 px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
+            <i class="fa-solid fa-arrows-rotate" id="syncIcon"></i>
             <span>Sync</span>
           </button>
-          <button onclick="handleLogout()" title="Logout" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 px-2 py-1 rounded-lg text-xs font-bold transition">
+          <button onclick="logout()" title="Logout" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 px-2.5 py-1.5 rounded-lg text-xs font-bold transition">
             <i class="fa-solid fa-power-off"></i>
           </button>
         </div>
@@ -178,497 +143,454 @@
 
       <div class="flex items-center justify-between">
         <div>
-          <h2 class="text-lg font-black tracking-tight" id="topUserName">Reena Sethiya</h2>
-          <div class="flex items-center gap-2 text-xs text-slate-300 mt-0.5">
-            <span id="topWorkingType" class="text-blue-300 font-bold uppercase text-[10px]">Part-Time</span>
-            <span>•</span>
-            <span class="inline-flex items-center gap-1 text-orange-400 font-black text-[11px]">
-              🔥 <span id="topStreakCount">1</span> Day Streak
-            </span>
+          <h2 class="text-2xl font-black tracking-tight leading-none mb-1" id="uiName">Loading...</h2>
+          <div class="flex items-center gap-2 text-xs mt-2">
+            <span id="uiType" class="text-blue-300 font-bold uppercase text-[10px] tracking-wider bg-blue-900/40 px-2 py-0.5 rounded border border-blue-500/30">Full-Time</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-[11px] font-black text-orange-400 bg-orange-950/40 px-2 py-0.5 rounded border border-orange-500/30">🔥 <span id="uiStreak">0</span> Day Streak</span>
           </div>
         </div>
-        <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center font-black text-sm text-blue-200" id="topAvatar">R</div>
-      </div>
-
-      <div class="flex justify-between items-center bg-black/25 border border-white/10 rounded-xl px-3 py-1.5 mt-3 text-[11px] font-semibold">
-        <span class="text-blue-200 font-mono" id="sessionDateLabel">Shift Date: </span>
-        <span class="text-slate-300 font-mono" id="syncStatus">Synced</span>
+        <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center font-black text-2xl text-blue-200 shadow-inner" id="uiAvatar">T</div>
       </div>
     </header>
 
-    <!-- ================= VIEW 1: TODAY'S LIVE LOGIN ================= -->
-    <main id="view-login" class="flex-1 p-3 max-w-md mx-auto w-full space-y-3">
-      
-      <!-- Primary Live Shift Card -->
-      <div class="glass-surface p-5 rounded-2xl space-y-4 shadow-xl">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div>
-            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Attendance Rule</span>
-            <p class="text-xs font-bold text-white mt-0.5" id="targetRequirementLabel">&gt; 4h 01m for Present</p>
-          </div>
-          <span id="liveBadgeStatus" class="badge badge-progress text-xs font-bold px-3 py-1 rounded-full">Not Logged Today</span>
-        </div>
+    <!-- CONTENT WRAPPER -->
+    <div class="p-3 sm:p-4 space-y-4">
 
-        <!-- Hero Net Production Box -->
-        <div class="hero-net-container rounded-2xl p-4 text-center">
-          <span class="text-[10px] font-black uppercase tracking-widest text-emerald-300 block mb-1">Net Production Time</span>
-          <p class="text-4xl font-extrabold text-white font-mono tracking-tight" id="liveNetProduction">00:00:00</p>
-          
-          <div class="w-full bg-slate-900/80 h-2 rounded-full mt-3.5 overflow-hidden p-0.5 border border-slate-800">
-            <div id="liveTargetProgressBar" class="bg-gradient-to-r from-blue-500 to-emerald-400 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
-          </div>
-          <div class="flex justify-between items-center text-[10px] text-slate-400 font-mono mt-2 px-1">
-            <span>00:00:00</span>
-            <span id="targetThresholdGoal" class="text-emerald-300 font-semibold">Goal: 04:01:00</span>
+      <!-- ================= TAB 1: LIVE LOGIN ================= -->
+      <section id="tab-login" class="space-y-4 animate-fade-in">
+        <div class="flex justify-between items-center text-xs px-2 mt-1">
+          <span class="font-bold text-slate-300 uppercase tracking-wider text-[10px]">Today's Shift</span>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-400 font-mono text-[10px] font-bold" id="uiSyncTime">Synced Now</span>
           </div>
         </div>
 
-        <!-- Break & Total Grid -->
-        <div class="grid grid-cols-2 gap-2.5 text-xs">
-          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-            <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wider mb-1">Total Break</span>
-            <span class="font-mono text-sm font-bold text-slate-100" id="liveTotalBreak">00:00:00</span>
-          </div>
-          <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-            <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wider mb-1">Gross Login</span>
-            <span class="font-mono text-sm font-bold text-slate-100" id="liveTotalLogin">00:00:00</span>
-          </div>
-        </div>
-
-        <!-- First Login Recorded Strip -->
-        <div class="bg-slate-900/80 px-3.5 py-2.5 rounded-xl border border-slate-800 text-xs flex items-center justify-between">
-          <span class="text-slate-400 text-[11px] font-medium">Shift Login Time:</span>
-          <span class="font-mono font-bold text-slate-200" id="liveFirstLogin">--:--</span>
-        </div>
-      </div>
-
-      <!-- Shift Rule Disclaimer -->
-      <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800/80 text-[11px] text-slate-400 space-y-1">
-        <div class="flex items-center gap-1.5 font-bold text-slate-300">
-          <i class="fa-solid fa-clock-rotate-left text-blue-400"></i>
-          <span>Discipline &amp; Shift Threshold</span>
-        </div>
-        <p class="leading-relaxed">
-          Must exceed target by 1 minute minimum (Part-Time: <strong>&gt;4h 01m</strong>, Full-Time: <strong>&gt;7h 01m</strong>) for Present status. Resets daily at 12:00 AM.
-        </p>
-      </div>
-    </main>
-
-    <!-- ================= VIEW 2: ACCOUNTABILITY PROFILE ================= -->
-    <main id="view-profile" class="hidden flex-1 p-3 max-w-md mx-auto w-full space-y-3">
-      
-      <!-- Gamified Fire Streak Banner -->
-      <div class="glass-surface p-4 rounded-2xl border border-orange-500/30 bg-gradient-to-r from-orange-950/30 via-slate-900 to-slate-900 flex items-center justify-between shadow-xl">
-        <div class="flex items-center space-x-3.5">
-          <div class="w-11 h-11 rounded-2xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-xl shadow-inner">🔥</div>
-          <div>
-            <div class="flex items-baseline space-x-1.5">
-              <span class="text-xl font-black text-orange-400 font-mono" id="mainStreakNum">1</span>
-              <span class="text-xs font-bold text-orange-200 uppercase tracking-wide">Days Discipline Streak</span>
+        <div class="glass-surface p-5 rounded-3xl space-y-4">
+          <div class="flex justify-between items-start border-b border-slate-800 pb-4">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Attendance Target</span>
+              <p class="text-sm font-bold text-white mt-1" id="uiTargetText">&gt; 7h 01m for Present</p>
             </div>
-            <p class="text-[10px] text-slate-400 mt-0.5">Company Sundays excluded automatically.</p>
+            <span id="uiBadge" class="text-[11px] font-bold px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">
+              Checking...
+            </span>
           </div>
-        </div>
-        <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-orange-500/15 text-orange-300 border border-orange-500/30">Active</span>
-      </div>
 
-      <!-- SYSTEM 1: ATTENDANCE STRIKE ENGINE -->
-      <div class="glass-surface p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div class="flex items-center space-x-2">
-            <i class="fa-solid fa-user-clock text-amber-400 text-sm"></i>
-            <h3 class="font-bold text-xs text-white uppercase tracking-wider">Attendance Strike Engine</h3>
-          </div>
-          <span id="strikeLedgerBadge" class="text-[10px] font-bold px-2.5 py-0.5 rounded border bg-rose-500/10 text-rose-400 border-rose-500/30">+2 Strike Active</span>
-        </div>
-
-        <div class="flex items-baseline justify-between">
-          <div>
-            <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Active Strikes</span>
-            <div class="flex items-baseline space-x-1.5 mt-0.5">
-              <span class="text-3xl font-black text-amber-400 font-mono" id="valStrikes">2</span>
-              <span class="text-[11px] text-slate-500 font-mono">/ 4 max</span>
+          <!-- Hero Net Production -->
+          <div class="hero-net-container rounded-2xl p-5 text-center relative mt-2">
+            <span class="text-[11px] font-black uppercase tracking-widest text-emerald-300 block mb-1">Net Production Time</span>
+            <p class="text-5xl font-extrabold text-white font-mono tracking-tight my-2 drop-shadow-md" id="uiNet">00:00:00</p>
+            
+            <div class="w-full bg-slate-900/80 h-2.5 rounded-full mt-4 overflow-hidden p-0.5 border border-slate-800/80">
+              <div id="uiProgress" class="bg-gradient-to-r from-blue-500 to-emerald-400 h-full rounded-full transition-all duration-700 ease-out" style="width: 0%;"></div>
+            </div>
+            <div class="flex justify-between items-center text-[10px] text-slate-400 font-mono mt-2 px-1">
+              <span>00:00:00</span>
+              <span id="uiGoalText" class="text-emerald-300 font-bold">Goal: 07:01:00</span>
             </div>
           </div>
-          <div class="text-right">
-            <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Discipline Status</span>
-            <p class="text-xs font-bold text-white mt-1" id="valStrikeStatus">Manager Meeting + No Recognition</p>
-          </div>
-        </div>
 
-        <!-- 4-Level Strike Progress Bar -->
-        <div class="grid grid-cols-4 gap-1.5">
-          <div id="sb1" class="h-2 rounded-full bg-amber-400 transition-colors duration-300"></div>
-          <div id="sb2" class="h-2 rounded-full bg-amber-400 transition-colors duration-300"></div>
-          <div id="sb3" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
-          <div id="sb4" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
-        </div>
-
-        <!-- Recovery Tracker Box -->
-        <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-[11px] space-y-2">
-          <div class="flex justify-between items-center text-slate-400">
-            <span>Recovery Target (Consistent Weeks):</span>
-            <span class="text-white font-bold"><span id="valConsistent" class="text-emerald-400">3</span> / 3 Weeks</span>
-          </div>
-          <div class="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden">
-            <div id="recoveryProgressBar" class="bg-emerald-400 h-full rounded-full transition-all duration-500" style="width: 100%;"></div>
-          </div>
-          <p class="text-[10px] text-slate-500 pt-1 border-t border-slate-800/80">
-            * 3 consecutive consistent weeks removes 1 Strike (-1 Strike).
-          </p>
-        </div>
-      </div>
-
-      <!-- SYSTEM 2: PERFORMANCE FLAG ENGINE -->
-      <div class="glass-surface p-5 rounded-2xl border border-slate-800 space-y-4 shadow-xl">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div class="flex items-center space-x-2">
-            <i class="fa-solid fa-chart-line text-blue-400 text-sm"></i>
-            <h3 class="font-bold text-xs text-white uppercase tracking-wider">Performance Flag Engine</h3>
-          </div>
-          <span id="flagLedgerBadge" class="text-[10px] font-bold px-2.5 py-0.5 rounded border bg-rose-500/10 text-rose-400 border-rose-500/30">+2 Flag Active</span>
-        </div>
-
-        <div class="flex items-baseline justify-between">
-          <div>
-            <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Cumulative Flags</span>
-            <div class="flex items-baseline space-x-1.5 mt-0.5">
-              <span class="text-3xl font-black text-rose-500 font-mono" id="valFlags">2</span>
-              <span class="text-[11px] text-slate-500 font-mono">/ 4 max</span>
+          <!-- Break & Gross Grid -->
+          <div class="grid grid-cols-2 gap-3 mt-2">
+            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 shadow-inner">
+              <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wider mb-1.5">Total Break</span>
+              <span class="font-mono text-lg font-bold text-slate-100" id="uiBreak">00:00:00</span>
+            </div>
+            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 shadow-inner">
+              <span class="text-slate-400 block text-[10px] uppercase font-bold tracking-wider mb-1.5">Gross Login</span>
+              <span class="font-mono text-lg font-bold text-slate-100" id="uiGross">00:00:00</span>
             </div>
           </div>
-          <div class="text-right">
-            <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Governance Action</span>
-            <p class="text-xs font-bold text-white mt-1" id="valFlagStatus">Manager Performance Review</p>
+
+          <!-- First Login Footer -->
+          <div class="bg-slate-900/80 px-4 py-3.5 rounded-xl border border-slate-800 text-xs flex items-center justify-between shadow-inner">
+            <span class="text-slate-400 text-[11px] font-bold uppercase tracking-wider">First Login Time:</span>
+            <span class="font-mono text-sm font-bold text-blue-200" id="uiFirst">--:--</span>
+          </div>
+          <div class="text-center pt-2">
+            <span class="text-[10px] text-slate-500 font-mono" id="uiDate">Date: Today</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: ACCOUNTABILITY ================= -->
+      <section id="tab-profile" class="hidden space-y-4 animate-fade-in">
+        <div class="flex justify-between items-center text-xs px-2 mt-1">
+          <span class="font-bold text-slate-300 uppercase tracking-wider text-[10px]">Governance & Quality</span>
+        </div>
+
+        <!-- STRIKE SYSTEM -->
+        <div class="glass-surface p-5 rounded-3xl space-y-4">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                <i class="fa-solid fa-user-clock text-amber-400 text-xs"></i>
+              </div>
+              <h3 class="font-bold text-xs text-white uppercase tracking-wider">Attendance Strike Engine</h3>
+            </div>
+            <span id="strikeBadge" class="text-[10px] font-bold px-2 py-1 rounded bg-slate-800 text-slate-400">0 Active</span>
+          </div>
+
+          <div class="flex items-end justify-between px-1">
+            <div>
+              <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Active Strikes</span>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-4xl font-black text-amber-400 font-mono leading-none" id="valStrikes">0</span>
+                <span class="text-xs text-slate-500 font-mono font-bold">/ 4 max</span>
+              </div>
+            </div>
+            <div class="text-right max-w-[50%]">
+              <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Discipline Status</span>
+              <p class="text-xs font-bold text-white leading-tight" id="strikeStatus">Good Standing</p>
+            </div>
+          </div>
+
+          <!-- 4-Level Strike Bar -->
+          <div class="grid grid-cols-4 gap-2 pt-2">
+            <div id="sb1" class="h-2.5 rounded-full bg-slate-800"></div>
+            <div id="sb2" class="h-2.5 rounded-full bg-slate-800"></div>
+            <div id="sb3" class="h-2.5 rounded-full bg-slate-800"></div>
+            <div id="sb4" class="h-2.5 rounded-full bg-slate-800"></div>
+          </div>
+
+          <!-- Recovery Tracker -->
+          <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 shadow-inner mt-2">
+            <div class="flex justify-between items-center text-slate-400 text-[11px] mb-2 font-bold uppercase tracking-wider">
+              <span>Recovery (Consistent Weeks)</span>
+              <span class="text-white"><span id="valConsistent" class="text-emerald-400 text-sm">0</span> / 3</span>
+            </div>
+            <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-800">
+              <div id="recProgress" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-700" style="width: 0%;"></div>
+            </div>
           </div>
         </div>
 
-        <!-- 4-Level Flag Progress Bar -->
-        <div class="grid grid-cols-4 gap-1.5">
-          <div id="fb1" class="h-2 rounded-full bg-rose-500 transition-colors duration-300"></div>
-          <div id="fb2" class="h-2 rounded-full bg-rose-500 transition-colors duration-300"></div>
-          <div id="fb3" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
-          <div id="fb4" class="h-2 rounded-full bg-slate-800 transition-colors duration-300"></div>
-        </div>
-
-        <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 text-[11px] space-y-1.5">
-          <div class="flex justify-between text-slate-400">
-            <span>Weekly Review Status:</span>
-            <span class="text-blue-400 font-bold" id="valScoreBand">Performance Review</span>
+        <!-- FLAG SYSTEM -->
+        <div class="glass-surface p-5 rounded-3xl space-y-4">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                <i class="fa-solid fa-chart-line text-blue-400 text-xs"></i>
+              </div>
+              <h3 class="font-bold text-xs text-white uppercase tracking-wider">Performance Flag Engine</h3>
+            </div>
+            <span id="flagBadge" class="text-[10px] font-bold px-2 py-1 rounded bg-slate-800 text-slate-400">0 Active</span>
           </div>
-          <p class="text-[10px] text-slate-500 pt-1 border-t border-slate-800/80">
-            * 3 × Good Performance removes 1 Flag (-1 Flag). 4 Flags = Allocation Review.
-          </p>
-        </div>
-      </div>
-    </main>
 
-    <!-- Bottom Native Mobile Navigation Bar -->
-    <nav class="fixed bottom-0 left-0 right-0 z-30 bg-[#070a12]/95 backdrop-blur-xl border-t border-slate-800 max-w-md mx-auto flex items-center justify-around py-2.5 px-4 shadow-2xl">
-      <button onclick="navigateTab('login')" id="btnTabLogin" class="flex-1 flex flex-col items-center justify-center py-1 text-blue-500 font-bold text-xs transition">
-        <i class="fa-solid fa-clock text-base mb-1"></i>
+          <div class="flex items-end justify-between px-1">
+            <div>
+              <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Cumulative Flags</span>
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-4xl font-black text-rose-500 font-mono leading-none" id="valFlags">0</span>
+                <span class="text-xs text-slate-500 font-mono font-bold">/ 4 max</span>
+              </div>
+            </div>
+            <div class="text-right max-w-[50%]">
+              <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Governance Action</span>
+              <p class="text-xs font-bold text-white leading-tight" id="flagStatus">Active / Normal</p>
+            </div>
+          </div>
+
+          <!-- 4-Level Flag Bar -->
+          <div class="grid grid-cols-4 gap-2 pt-2">
+            <div id="fb1" class="h-2.5 rounded-full bg-slate-800"></div>
+            <div id="fb2" class="h-2.5 rounded-full bg-slate-800"></div>
+            <div id="fb3" class="h-2.5 rounded-full bg-slate-800"></div>
+            <div id="fb4" class="h-2.5 rounded-full bg-slate-800"></div>
+          </div>
+
+          <!-- Score Band -->
+          <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 shadow-inner mt-2 flex justify-between items-center">
+            <span class="text-slate-400 text-[11px] font-bold uppercase tracking-wider">Score Band:</span>
+            <span class="text-blue-300 font-bold text-xs" id="valScoreBand">Good Performance</span>
+          </div>
+        </div>
+      </section>
+
+    </div> <!-- End Content Wrapper -->
+  </div>
+
+  <!-- ================= BOTTOM NAVIGATION ================= -->
+  <nav id="bottomNav" class="hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800/80 pb-safe">
+    <div class="max-w-lg mx-auto flex justify-around p-2">
+      <button onclick="switchTab('login')" id="btnTabLogin" class="flex-1 flex flex-col items-center justify-center py-2 px-1 text-blue-500 font-bold text-[11px] transition-colors rounded-xl bg-blue-500/10">
+        <i class="fa-solid fa-clock text-lg mb-1"></i>
         <span>Live Login</span>
       </button>
-      <button onclick="navigateTab('profile')" id="btnTabProfile" class="flex-1 flex flex-col items-center justify-center py-1 text-slate-500 font-bold text-xs transition hover:text-slate-300">
-        <i class="fa-solid fa-shield-halved text-base mb-1"></i>
+      <button onclick="switchTab('profile')" id="btnTabProfile" class="flex-1 flex flex-col items-center justify-center py-2 px-1 text-slate-500 hover:text-slate-300 font-bold text-[11px] transition-colors rounded-xl">
+        <i class="fa-solid fa-shield-halved text-lg mb-1"></i>
         <span>Accountability</span>
       </button>
-    </nav>
+    </div>
+  </nav>
 
-  </div>
-
-  <!-- Notification Toast -->
-  <div id="downloadToast" class="fixed bottom-16 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl shadow-2xl items-center gap-2 z-50">
-    <i class="fa-solid fa-circle-check text-sm"></i>
-    <span>index.html downloaded successfully!</span>
-  </div>
-
-  <!-- ================= 3. CLIENT CONTROLLER & DATA ENGINE ================= -->
+  <!-- ================= LOGIC & DATA ENGINE ================= -->
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlIyDugTAU-codhmJZ7OH_Q-5RYW6blDidh8uBWw7Nkka6-KcI_5Dr6Qx-cJIkefe2/exec";
-    const SESSION_STORE_KEY = "tara_mobile_session_final_v1";
+    const SESSION_KEY = "tara_unified_session_v2";
 
-    // 1-Click Blob Direct Downloader (Downloads clean index.html directly to disk)
-    function triggerImmediateDownload() {
-      try {
-        const fullContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-        const blob = new Blob([fullContent], { type: "text/html;charset=utf-8" });
-        const downloadUrl = URL.createObjectURL(blob);
-        const tempLink = document.createElement("a");
-        tempLink.href = downloadUrl;
-        tempLink.download = "index.html";
-        document.body.appendChild(tempLink);
-        tempLink.click();
-        document.body.removeChild(tempLink);
-        URL.revokeObjectURL(downloadUrl);
-
-        const toast = document.getElementById("downloadToast");
-        toast.classList.remove("hidden");
-        toast.classList.add("flex");
-        setTimeout(() => {
-          toast.classList.add("hidden");
-          toast.classList.remove("flex");
-        }, 3000);
-      } catch (err) {
-        console.error("Download failed:", err);
-      }
-    }
-
-    // Clean Google Sheets 1899 GMT time artifacts
-    function sanitizeTime(val) {
-      if (!val) return "00:00:00";
-      const s = String(val).trim();
-      if (s.includes("GMT") || s.includes("1899")) {
-        const d = new Date(val);
-        if (!isNaN(d.getTime())) {
-          const hh = String(d.getHours()).padStart(2, '0');
-          const mm = String(d.getMinutes()).padStart(2, '0');
-          const ss = String(d.getSeconds()).padStart(2, '0');
-          return `${hh}:${mm}:${ss}`;
-        }
-      }
-      return s;
-    }
-
-    // High-Resilience Dual Transport Engine (JSONP Primary with Fetch Fallback)
-    function dispatchDataRequest(email, password, onSuccess, onError) {
-      let isResolved = false;
+    // 1. Core JSONP Transport Engine (Zero CORS Issues)
+    function executeJsonpCall(email, password, onSuccess, onError) {
       const cleanEmail = email.trim();
       const cleanPass = password.trim();
+      let isHandled = false;
 
-      const cbName = `tara_fbo_jsonp_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+      const timestamp = Date.now();
+      const cbName = `tara_sync_${timestamp}_${Math.floor(Math.random() * 1000)}`;
 
-      const fallbackTimer = setTimeout(() => {
-        if (!isResolved) {
-          isResolved = true;
-          cleanupScript(cbName);
-          fetch(`${SCRIPT_URL}?action=login&email=${encodeURIComponent(cleanEmail)}&password=${encodeURIComponent(cleanPass)}`)
-            .then(res => res.json())
-            .then(data => onSuccess(data))
-            .catch(() => onError("Connection timeout. Please check your internet connection."));
+      const timeoutId = setTimeout(() => {
+        if (!isHandled) {
+          isHandled = true;
+          cleanup(cbName);
+          onError("Connection timeout. Please check your internet connection.");
         }
-      }, 7000);
+      }, 10000);
 
-      window[cbName] = function(response) {
-        if (isResolved) return;
-        isResolved = true;
-        clearTimeout(fallbackTimer);
-        cleanupScript(cbName);
-        onSuccess(response);
+      window[cbName] = function(payload) {
+        if (isHandled) return;
+        isHandled = true;
+        clearTimeout(timeoutId);
+        cleanup(cbName);
+        onSuccess(payload);
       };
 
       const script = document.createElement('script');
       script.id = cbName;
       script.type = 'text/javascript';
       script.async = true;
-      script.src = `${SCRIPT_URL}?action=login&email=${encodeURIComponent(cleanEmail)}&password=${encodeURIComponent(cleanPass)}&callback=${cbName}&_z=${Date.now()}`;
+      script.src = `${SCRIPT_URL}?action=login&email=${encodeURIComponent(cleanEmail)}&password=${encodeURIComponent(cleanPass)}&callback=${cbName}&_t=${timestamp}`;
 
       script.onerror = function() {
-        if (!isResolved) {
-          isResolved = true;
-          clearTimeout(fallbackTimer);
-          cleanupScript(cbName);
-          fetch(`${SCRIPT_URL}?action=login&email=${encodeURIComponent(cleanEmail)}&password=${encodeURIComponent(cleanPass)}`)
-            .then(res => res.json())
-            .then(data => onSuccess(data))
-            .catch(() => onError("Failed to communicate with enterprise server."));
+        if (!isHandled) {
+          isHandled = true;
+          clearTimeout(timeoutId);
+          cleanup(cbName);
+          onError("Network error communicating with server.");
         }
       };
 
       document.head.appendChild(script);
     }
 
-    function cleanupScript(id) {
-      try { delete window[id]; } catch (e) {}
-      const elem = document.getElementById(id);
-      if (elem && elem.parentNode) elem.parentNode.removeChild(elem);
+    function cleanup(cbName) {
+      try { delete window[cbName]; } catch (e) {}
+      const scriptNode = document.getElementById(cbName);
+      if (scriptNode) scriptNode.remove();
     }
 
-    function handleAuthSubmit(e) {
+    // 2. Authentication Flow
+    function handleLogin(e) {
       e.preventDefault();
-      const email = document.getElementById("fboEmail").value.trim();
-      const pass = document.getElementById("fboPass").value.trim();
-      const btn = document.getElementById("authSubmitBtn");
-      const btnText = document.getElementById("btnAuthText");
-      const spinner = document.getElementById("btnAuthSpinner");
-      const err = document.getElementById("authErrorMsg");
+      const email = document.getElementById("inputEmail").value;
+      const pass = document.getElementById("inputPass").value;
+      
+      const btnText = document.getElementById("btnText");
+      const btnSpinner = document.getElementById("btnSpinner");
+      const btnSubmit = document.getElementById("btnSubmit");
+      const errorMsg = document.getElementById("errorMsg");
 
       btnText.innerText = "Authenticating...";
-      spinner.classList.remove("hidden");
-      btn.disabled = true;
-      err.classList.add("hidden");
+      btnSpinner.classList.remove("hidden");
+      btnSubmit.disabled = true;
+      errorMsg.classList.add("hidden");
 
-      dispatchDataRequest(email, pass, 
-        function(data) {
-          btnText.innerText = "Sign In to Hub";
-          spinner.classList.add("hidden");
-          btn.disabled = false;
+      executeJsonpCall(email, pass, 
+        function(response) {
+          btnText.innerText = "Authenticate & Enter";
+          btnSpinner.classList.add("hidden");
+          btnSubmit.disabled = false;
 
-          if (data && data.status === "success") {
-            const sessionPayload = { email: email, pass: pass, payload: data };
-            localStorage.setItem(SESSION_STORE_KEY, JSON.stringify(sessionPayload));
-            renderInterface(data);
+          if (response && response.status === "success") {
+            localStorage.setItem(SESSION_KEY, JSON.stringify({ email: email, pass: pass, data: response }));
+            renderApp(response);
           } else {
-            err.innerText = (data && data.message) ? data.message : "Invalid Email or Passcode.";
-            err.classList.remove("hidden");
+            errorMsg.innerText = (response && response.message) ? response.message : "Invalid Credentials.";
+            errorMsg.classList.remove("hidden");
           }
         },
-        function(errMsg) {
-          btnText.innerText = "Sign In to Hub";
-          spinner.classList.add("hidden");
-          btn.disabled = false;
-          err.innerText = errMsg;
-          err.classList.remove("hidden");
+        function(errText) {
+          btnText.innerText = "Authenticate & Enter";
+          btnSpinner.classList.add("hidden");
+          btnSubmit.disabled = false;
+          errorMsg.innerText = errText;
+          errorMsg.classList.remove("hidden");
         }
       );
     }
 
-    function refreshLiveTelemetry() {
-      const sessionData = JSON.parse(localStorage.getItem(SESSION_STORE_KEY) || "{}");
-      if (!sessionData.email) return;
+    // 3. UI Rendering Engine
+    function renderApp(data) {
+      document.getElementById("loginView").classList.add("hidden");
+      document.getElementById("dashboardView").classList.remove("hidden");
+      document.getElementById("bottomNav").classList.remove("hidden");
 
-      const icon = document.getElementById("refreshIcon");
-      icon.classList.add("fa-spin");
-      document.getElementById("syncStatus").innerText = "Syncing...";
+      // Profile mapping
+      const p = data.profile || {};
+      const name = p.name || "FBO User";
+      const wType = p.workingType || "Full-Time";
+      document.getElementById("uiName").innerText = name;
+      document.getElementById("uiType").innerText = wType;
+      document.getElementById("uiAvatar").innerText = name.charAt(0).toUpperCase();
 
-      dispatchDataRequest(sessionData.email, sessionData.pass,
-        function(data) {
-          icon.classList.remove("fa-spin");
-          if (data && data.status === "success") {
-            sessionData.payload = data;
-            localStorage.setItem(SESSION_STORE_KEY, JSON.stringify(sessionData));
-            renderInterface(data);
-            document.getElementById("syncStatus").innerText = `Synced at ${new Date().toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit', hour12:true})}`;
+      const streak = data.streak || 0;
+      document.getElementById("uiStreak").innerText = streak;
+      
+      // LIVE LOGIN TAB
+      const l = data.live || {};
+      const isPt = wType.toLowerCase().includes("part");
+      
+      document.getElementById("uiTargetText").innerText = isPt ? "> 4h 01m for Present" : "> 7h 01m for Present";
+      document.getElementById("uiGoalText").innerText = isPt ? "Goal: 04:01:00" : "Goal: 07:01:00";
+      document.getElementById("uiDate").innerText = `Date: ${l.date || "Today"}`;
+      
+      document.getElementById("uiNet").innerText = cleanDisplayTime(l.netLogin);
+      document.getElementById("uiBreak").innerText = cleanDisplayTime(l.totalBreak);
+      document.getElementById("uiGross").innerText = cleanDisplayTime(l.totalLogin);
+      document.getElementById("uiFirst").innerText = cleanDisplayTime(l.loginTime);
+
+      const badge = document.getElementById("uiBadge");
+      badge.innerText = l.badge || "In Shift";
+      
+      let badgeClass = "badge-progress";
+      if (l.isTargetMet) badgeClass = "badge-fullday";
+      else if (badge.innerText.toLowerCase().includes("absent")) badgeClass = "badge-absent";
+      else if (badge.innerText.toLowerCase().includes("half")) badgeClass = "badge-halfday";
+      
+      badge.className = `text-[11px] font-bold px-3 py-1.5 rounded-lg border ${badgeClass}`;
+      document.getElementById("uiProgress").style.width = (l.progressPct || 0) + "%";
+
+      // ACCOUNTABILITY TAB: Strikes
+      const att = data.attendance || {};
+      const str = parseInt(att.strikes) || 0;
+      const cw = parseInt(att.consistentWeeks) || 0;
+      
+      document.getElementById("valStrikes").innerText = str;
+      document.getElementById("strikeStatus").innerText = att.status || "Good Standing";
+      document.getElementById("valConsistent").innerText = cw;
+      document.getElementById("recProgress").style.width = Math.min(Math.round((cw / 3) * 100), 100) + "%";
+
+      const sBadge = document.getElementById("strikeBadge");
+      sBadge.innerText = str > 0 ? `+${str} Active` : "0 Active";
+      sBadge.className = str > 0 
+        ? "text-[10px] font-bold px-2.5 py-1 rounded-md border bg-rose-500/10 text-rose-400 border-rose-500/30"
+        : "text-[10px] font-bold px-2.5 py-1 rounded-md border bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
+
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById("sb" + i).className = i <= str ? "h-2.5 rounded-full bg-amber-400" : "h-2.5 rounded-full bg-slate-800";
+      }
+
+      // ACCOUNTABILITY TAB: Flags
+      const perf = data.performance || {};
+      const flg = parseInt(perf.flags) || 0;
+      
+      document.getElementById("valFlags").innerText = flg;
+      document.getElementById("flagStatus").innerText = perf.status || "Active / Normal";
+      document.getElementById("valScoreBand").innerText = perf.scoreBand || "Good Standing";
+
+      const fBadge = document.getElementById("flagBadge");
+      fBadge.innerText = flg > 0 ? `+${flg} Active` : "0 Active";
+      fBadge.className = flg > 0
+        ? "text-[10px] font-bold px-2.5 py-1 rounded-md border bg-rose-500/10 text-rose-400 border-rose-500/30"
+        : "text-[10px] font-bold px-2.5 py-1 rounded-md border bg-blue-500/10 text-blue-400 border-blue-500/30";
+
+      for (let j = 1; j <= 4; j++) {
+        document.getElementById("fb" + j).className = j <= flg ? "h-2.5 rounded-full bg-rose-500" : "h-2.5 rounded-full bg-slate-800";
+      }
+
+      // Set Sync Time
+      const now = new Date();
+      document.getElementById("uiSyncTime").innerText = `Synced at ${("0"+now.getHours()).slice(-2)}:${("0"+now.getMinutes()).slice(-2)}`;
+    }
+
+    // Tab Navigation Logic
+    function switchTab(t) {
+      const vL = document.getElementById("tab-login");
+      const vP = document.getElementById("tab-profile");
+      const bL = document.getElementById("btnTabLogin");
+      const bP = document.getElementById("btnTabProfile");
+
+      if (t === 'login') {
+        vL.classList.remove("hidden");
+        vP.classList.add("hidden");
+        bL.className = "flex-1 flex flex-col items-center justify-center py-2 px-1 text-blue-500 font-bold text-[11px] transition-colors rounded-xl bg-blue-500/10";
+        bP.className = "flex-1 flex flex-col items-center justify-center py-2 px-1 text-slate-500 hover:text-slate-300 font-bold text-[11px] transition-colors rounded-xl";
+      } else {
+        vL.classList.add("hidden");
+        vP.classList.remove("hidden");
+        bL.className = "flex-1 flex flex-col items-center justify-center py-2 px-1 text-slate-500 hover:text-slate-300 font-bold text-[11px] transition-colors rounded-xl";
+        bP.className = "flex-1 flex flex-col items-center justify-center py-2 px-1 text-blue-500 font-bold text-[11px] transition-colors rounded-xl bg-blue-500/10";
+      }
+    }
+
+    // Refresh Sync Logic
+    function syncData() {
+      const sessionStr = localStorage.getItem(SESSION_KEY);
+      if (!sessionStr) return;
+      const session = JSON.parse(sessionStr);
+
+      const syncIcon = document.getElementById("syncIcon");
+      const syncTimeStr = document.getElementById("uiSyncTime");
+      
+      syncIcon.classList.add("fa-spin");
+      syncTimeStr.innerText = "Syncing...";
+
+      executeJsonpCall(session.email, session.pass, 
+        function(response) {
+          syncIcon.classList.remove("fa-spin");
+          if (response && response.status === "success") {
+            session.data = response;
+            localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+            renderApp(response);
+          } else {
+            syncTimeStr.innerText = "Sync Failed";
           }
         },
         function() {
-          icon.classList.remove("fa-spin");
-          document.getElementById("syncStatus").innerText = "Sync Failed";
+          syncIcon.classList.remove("fa-spin");
+          syncTimeStr.innerText = "Network Error";
         }
       );
     }
 
-    function renderInterface(data) {
-      document.getElementById("loginModal").classList.add("hidden");
-      document.getElementById("mainApp").classList.remove("hidden");
-
-      const profile = data.profile || {};
-      const name = profile.name || "FBO Member";
-      document.getElementById("topUserName").innerText = name;
-      document.getElementById("topWorkingType").innerText = profile.workingType || "Full-Time";
-      document.getElementById("topAvatar").innerText = name.charAt(0).toUpperCase();
-
-      const streak = data.streak || 0;
-      document.getElementById("topStreakCount").innerText = streak;
-      document.getElementById("mainStreakNum").innerText = streak;
-
-      // 1. Live Shift Telemetry Binding
-      const live = data.live || {};
-      const isPt = (profile.workingType || "Full-Time").toLowerCase().includes("part");
-      document.getElementById("targetRequirementLabel").innerText = isPt ? "> 4h 01m for Present" : "> 7h 01m for Present";
-      document.getElementById("targetThresholdGoal").innerText = isPt ? "Goal: 04:01:00" : "Goal: 07:01:00";
-      
-      const displayDate = live.date ? String(live.date).split(" ")[0].replace(/T.*/, '') : "Today";
-      document.getElementById("sessionDateLabel").innerText = `Shift Date: ${displayDate}`;
-
-      document.getElementById("liveNetProduction").innerText = sanitizeTime(live.netLogin);
-      document.getElementById("liveTotalBreak").innerText = sanitizeTime(live.totalBreak);
-      document.getElementById("liveTotalLogin").innerText = sanitizeTime(live.totalLogin);
-      document.getElementById("liveFirstLogin").innerText = sanitizeTime(live.loginTime);
-
-      const badgeElem = document.getElementById("liveBadgeStatus");
-      badgeElem.innerText = live.badge || "In Shift";
-      badgeElem.className = `badge ${live.badgeClass || (live.isTargetMet ? "badge-fullday" : "badge-progress")} text-xs font-bold px-3 py-1 rounded-full`;
-
-      document.getElementById("liveTargetProgressBar").style.width = (live.progressPct || 0) + "%";
-
-      // 2. Attendance Strikes & Recovery Tracker
-      const strikes = parseInt(data.attendance?.strikes, 10) || 0;
-      const consistentWeeks = parseInt(data.attendance?.consistentWeeks, 10) || 0;
-      document.getElementById("valStrikes").innerText = strikes;
-      document.getElementById("valStrikeStatus").innerText = data.attendance?.status || "Good Standing";
-      document.getElementById("valConsistent").innerText = consistentWeeks;
-
-      const recProgress = Math.min(Math.round((consistentWeeks / 3) * 100), 100);
-      document.getElementById("recoveryProgressBar").style.width = recProgress + "%";
-
-      const strLedger = document.getElementById("strikeLedgerBadge");
-      if (strikes > 0) {
-        strLedger.className = "text-[10px] font-bold px-2.5 py-0.5 rounded border bg-rose-500/10 text-rose-400 border-rose-500/30";
-        strLedger.innerText = `+${strikes} Strike Active`;
-      } else {
-        strLedger.className = "text-[10px] font-bold px-2.5 py-0.5 rounded border bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
-        strLedger.innerText = "0 Strike (Clean)";
+    // Utility: Format Time & Handle 1899 GMT bug
+    function cleanDisplayTime(val) {
+      if (!val) return "00:00:00";
+      const s = String(val).trim();
+      if (s.includes("GMT") || s.includes("1899")) {
+        const d = new Date(val);
+        if (!isNaN(d.getTime())) return `${("0"+d.getHours()).slice(-2)}:${("0"+d.getMinutes()).slice(-2)}:${("0"+d.getSeconds()).slice(-2)}`;
       }
-
-      for (let i = 1; i <= 4; i++) {
-        document.getElementById("sb" + i).className = i <= strikes ? "h-2 rounded-full bg-amber-400 transition-colors duration-300" : "h-2 rounded-full bg-slate-800 transition-colors duration-300";
-      }
-
-      // 3. Performance Flags Engine
-      const flags = parseInt(data.performance?.flags, 10) || 0;
-      document.getElementById("valFlags").innerText = flags;
-      document.getElementById("valFlagStatus").innerText = data.performance?.status || "Active / Normal";
-      document.getElementById("valScoreBand").innerText = data.performance?.scoreBand || data.performance?.currentReview || "Good Standing";
-
-      const flgLedger = document.getElementById("flagLedgerBadge");
-      if (flags > 0) {
-        flgLedger.className = "text-[10px] font-bold px-2.5 py-0.5 rounded border bg-rose-500/10 text-rose-400 border-rose-500/30";
-        flgLedger.innerText = `+${flags} Flag Active`;
-      } else {
-        flgLedger.className = "text-[10px] font-bold px-2.5 py-0.5 rounded border bg-blue-500/10 text-blue-400 border-blue-500/30";
-        flgLedger.innerText = "0 Flag (Clean)";
-      }
-
-      for (let j = 1; j <= 4; j++) {
-        document.getElementById("fb" + j).className = j <= flags ? "h-2 rounded-full bg-rose-500 transition-colors duration-300" : "h-2 rounded-full bg-slate-800 transition-colors duration-300";
-      }
+      return s;
     }
 
-    function navigateTab(tab) {
-      const vLogin = document.getElementById("view-login");
-      const vProfile = document.getElementById("view-profile");
-      const btnLogin = document.getElementById("btnTabLogin");
-      const btnProfile = document.getElementById("btnTabProfile");
-
-      if (tab === 'login') {
-        vLogin.classList.remove("hidden");
-        vProfile.classList.add("hidden");
-        btnLogin.className = "flex-1 flex flex-col items-center justify-center py-1 text-blue-500 font-bold text-xs transition";
-        btnProfile.className = "flex-1 flex flex-col items-center justify-center py-1 text-slate-500 font-bold text-xs transition hover:text-slate-300";
-      } else {
-        vLogin.classList.add("hidden");
-        vProfile.classList.remove("hidden");
-        btnLogin.className = "flex-1 flex flex-col items-center justify-center py-1 text-slate-500 font-bold text-xs transition hover:text-slate-300";
-        btnProfile.className = "flex-1 flex flex-col items-center justify-center py-1 text-blue-500 font-bold text-xs transition";
-      }
-    }
-
-    function handleLogout() {
-      localStorage.removeItem(SESSION_STORE_KEY);
+    function logout() {
+      localStorage.removeItem(SESSION_KEY);
       location.reload();
     }
 
-    // Auto-load cached session on startup
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedSession = localStorage.getItem(SESSION_STORE_KEY);
-      if (savedSession) {
+    // On Load Check Session
+    window.addEventListener('DOMContentLoaded', () => {
+      const stored = localStorage.getItem(SESSION_KEY);
+      if (stored) {
         try {
-          const parsed = JSON.parse(savedSession);
-          if (parsed && parsed.payload) {
-            renderInterface(parsed.payload);
+          const session = JSON.parse(stored);
+          if (session && session.data) {
+            renderApp(session.data);
+            syncData(); // Background auto-sync
           }
-        } catch(e) {
-          localStorage.removeItem(SESSION_STORE_KEY);
+        } catch (e) {
+          localStorage.removeItem(SESSION_KEY);
         }
       }
     });
   </script>
 
-
-```
-
-### How to Save &amp; Deploy:
-1. **Download via UI:** In the interactive preview on the right, click the green **"Download index.html"** button pinned at the top. The complete `index.html` file will immediately download to your computer.
-2. **Download via Editor:** You can also click the standard editor **Download** icon at the very top of the editor window.
-3. **Commit to GitHub:** Drop the downloaded `index.html` file into your `tara-enterprise-portal-AAP` repository and commit changes.</body></html>
+  <!-- Add CSS for fade-in animation and safe padding for iPhone nav bars -->
+  <style>
+    .animate-fade-in { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+  </style>
+</body>
+</html>
